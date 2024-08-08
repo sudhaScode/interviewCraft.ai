@@ -3,7 +3,8 @@ import "./Splitter.css";
 import Split from "react-split";
 import LeftPaneMenu from "../LeftPaneMenu";
 import ChatBot from "../chatinterface/ChatBot";
-import Resume from "../Resume"
+import Resume from "../Resume";
+import { useSelector } from "react-redux";
 /*  
 import Chatbot from "react-chatbot-kit";
 import "react-chatbot-kit/build/main.css";
@@ -13,6 +14,8 @@ import config from "../Chatbot/config";
 */
 
 function Splitter(){
+    const isLogin = useSelector(state=>state.flow.isLogin);
+    const isUploaded = useSelector(state=>state.flow.isUploaded)
   
   //console.log("islogin", isLogin)
     return(
@@ -23,13 +26,13 @@ function Splitter(){
                 <LeftPaneMenu  />
             </div>
             <div className="right-pane">
-            <ChatBot />
+               <ChatBot />
             </div>
         </Split>
         <div id="normal-interface">
              <ChatBot />
              <div className="top-content">
-                 <Resume/>
+             { isLogin && !isUploaded && <Resume />}
              </div>
         </div>
    </>

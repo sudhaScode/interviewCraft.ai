@@ -5,3 +5,13 @@
     bottom: 35%;
     height: 300px;
   }
+
+  @media screen and (max-width: 450px) {
+    .card{
+      border-radius: 0px;
+      width: fit-content;
+      background-color: transparent;
+      height: 300px;
+      margin-left: 15%
+    }
+}

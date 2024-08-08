@@ -35,3 +35,31 @@
     margin-left:25%;
 
 }
+
+@media screen and (max-width: 450px) {
+    .authentization{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+    }
+    .loginButton{
+        background-color: rgb(111, 53, 53);
+        color: white;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .authentization{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+    }
+    .loginButton{
+        background-color: rgb(111, 53, 53);
+        color: white;
+    }
+}

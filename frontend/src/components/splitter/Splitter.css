@@ -1,0 +1,34 @@
+.split{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+
+}
+.left-pane{
+    background-color: rgb(226, 201, 201);
+    min-width: 23vw;
+    max-width: 38vw;
+    height: 90vh;
+}
+.gutter {
+    background-color: rgb(225, 182, 182);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;
+    width: 10px !important;
+    cursor: ew-resize !important;
+    height: 90vh;
+}
+
+.gutter.gutter-horizontal {
+    background-image: url('/src/assets/dividershort.svg');
+    cursor: ew-resize !important;
+}
+.gutter:hover,
+.gutter:active{
+    background-color: rgb(146, 201, 244);
+}
+.right-pane{
+    min-width: 72vw;
+    height: 100%;
+}

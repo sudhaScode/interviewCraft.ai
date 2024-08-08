@@ -1,0 +1,37 @@
+.authentization{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+.loginform{
+    display: flex;
+    flex-direction: column;
+    
+}
+.loginform label{
+    font-weight: 700;
+    font-size: 12px;
+    padding: 0;
+}
+.inputUser{
+   margin-bottom: 10px;
+   border: none;
+   padding: 5px;
+   border-radius: 5px;
+   border: 2px solid rgb(237, 201, 201);
+   width: 222px;
+
+}
+.loginButton{
+    background-color: antiquewhite;
+    border: none;
+    padding: 8px;
+    width: 100px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left:25%;
+
+}

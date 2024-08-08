@@ -1,0 +1,16 @@
+.errors{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.invalifd{
+    color: red;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.loading{
+    color: blue;
+    font-size: 16px;
+    margin-bottom: 10px;
+}

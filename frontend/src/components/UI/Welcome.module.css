@@ -1,0 +1,12 @@
+.welcome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem;
+
+}
+.welcome p{
+    font-size: 20px;
+    font-weight: 600;
+}

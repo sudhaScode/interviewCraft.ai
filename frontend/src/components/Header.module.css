@@ -1,0 +1,32 @@
+.header{
+    height: 10%;
+    width: 100%;
+    background-color: rgb(202, 154, 154);
+    display: flex;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 1px 1px 4px 1px black;
+
+
+}
+.logo{
+    margin-left: 1.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: black;
+}
+.login{
+    margin-right: 3rem;
+    background-color: transparent;
+    border: none;
+    font-size: 1.8rem;
+    font-weight: 800;
+    cursor: pointer;
+    text-align: center;
+}
+.login:hover{
+    background-color: rgba(240, 248, 255, 0.596);
+    border-radius: 10px;
+}

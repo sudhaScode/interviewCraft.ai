@@ -29,6 +29,17 @@
     border: 2px solid snow;
     
 }
+.style-container-one{
+    width: 95%;
+    height: 95%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid snow;
+
+}
 .chat-form{
     display: flex;
     width: 95%;
@@ -130,10 +141,10 @@
   @media screen and (max-width: 768px) {
 
     .chat-conatiner{
-        margin-top: 21px;
+        margin-top: 0;
     }
     .chat-conatiner-one{
-        margin-top: 21px;
+        margin-top: 0;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -148,7 +159,7 @@
         
     }
     .chat-conatiner-one{
-        margin-top: 10px;
+        margin-top: 0px !important;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -156,6 +167,10 @@
     .style-container{
         width: 100%;
         border-radius: 20px;
+        height: 80%;
+    }
+    .style-container-one{
+       margin-top: 15px;
     }
     .prompt-window{
         width: 100%;

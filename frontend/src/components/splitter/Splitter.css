@@ -45,7 +45,7 @@
 #normal-interface{
     display: block;
     position: relative;
-    height: 90vh;
+    height: 92vh; /*7 for header*/
 }
 .top-content{
     width: 100%;

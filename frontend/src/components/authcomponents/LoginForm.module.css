@@ -36,7 +36,7 @@
 
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 768px) {
     .authentization{
         display: flex;
         flex-direction: column;
@@ -50,7 +50,8 @@
     }
 }
 
-@media screen and (max-width: 768px) {
+
+@media screen and (max-width: 450px) {
     .authentization{
         display: flex;
         flex-direction: column;

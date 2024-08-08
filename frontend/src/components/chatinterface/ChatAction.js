@@ -75,15 +75,15 @@ function ChatAction({isMock}){
             setCount(prev=>prev+1)
         }
         try{
-            // const response = await axios.post(URL, body );
-            // //console.log(response)
-            // if(response.status === 200){
-            //     const data=  await response.data;
-            //     return data;
-            // }
-            // else{
-            //     throw Error("Prompt Failed")
-            // }
+            const response = await axios.post(URL, body );
+            //console.log(response)
+            if(response.status === 200){
+                const data=  await response.data;
+                return data;
+            }
+            else{
+                throw Error("Prompt Failed")
+            }
         }
         catch(error){
             throw error
@@ -106,7 +106,7 @@ function ChatAction({isMock}){
     </div>}
         <div className={prompt.length>1? styles["chat-conatiner"]:styles["chat-conatiner-one"]}>
             
-             {isUploaded ? <form className={styles["style-container"]} onSubmit={onPromptHander}>
+             {!isUploaded ? <form className={prompt.length>1? styles["style-container"]:styles["style-container-one"]} onSubmit={onPromptHander}>
                 <textarea className={styles["prompt-input"]} ref={ref} placeholder="Enter a prompt here" name="prompt" onChange={handleInputChange}/>
                {/* <input type="text" name="prompt" placeholder="Enter a prompt here" className={styles["prompt-input"]}/>*/}
                 <button type="submit" className={styles["send-button"]} disabled ={isPromting}><img src="https://cdn-icons-png.freepik.com/512/10109/10109981.png" alt="SEND" className={styles["send-icon"]}/></button>

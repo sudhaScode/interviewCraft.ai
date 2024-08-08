@@ -47,30 +47,30 @@ function Resume() {
       try{
         const fileData = new FormData();
         fileData.append('file', fileInput)
-    //   const response = await fetch("http://127.0.0.1:8000/load", {
-    //     method : "POST",
-    //   body: fileData
-    // })
-    //   if(response.ok){
-    //     //console.log("RESPONSE DEBUG::",response)
-    //     setLoader(false);
-    //     sessionStorage.setItem("uploaded", true)
-    //     dispatch(handleUpload(true))
-    //     const message =  {
-    //       name: "Craft.ai",
-    //       key: "bot-resume-res",
-    //       response:"Thanks for providing the resume, I am here to help you..."
-    //   }
-    //   // const persistedMessages =JSON.parse( sessionStorage.getItem("messages"))
-    //   // persistedMessages.push(message)
-    //    let storeMessage = [...messages, message]
-    //    sessionStorage.setItem("messages", JSON.stringify(storeMessage))
+      const response = await fetch("http://127.0.0.1:8000/load", {
+        method : "POST",
+      body: fileData
+    })
+      if(response.ok){
+        //console.log("RESPONSE DEBUG::",response)
+        setLoader(false);
+        sessionStorage.setItem("uploaded", true)
+        dispatch(handleUpload(true))
+        const message =  {
+          name: "Craft.ai",
+          key: "bot-resume-res",
+          response:"Thanks for providing the resume, I am here to help you..."
+      }
+       // const persistedMessages =JSON.parse( sessionStorage.getItem("messages"))
+      // persistedMessages.push(message)
+      let storeMessage = [...messages, message]
+        sessionStorage.setItem("messages", JSON.stringify(storeMessage))
     
-    //     //pushChat(message);
-    //     dispatch(push(message))
+         //pushChat(message);
+         dispatch(push(message))
         //sessionStorage.setItem("messages", JSON.stringify(messages))
         
-      // }
+       }
      }
      catch(error){
       console.log("An error occured", error)
@@ -92,7 +92,7 @@ function Resume() {
            <form onSubmit={onUploadFile} >
            <input name="fileinput" type="file" required style={{display:"none"}} ref={inputRef} id="filePlaceholder" onChange={onFileChange}/>
            <div>
-           {!fileInput?<button className={styles["resume-button"]} onClick={(event)=>onFileHandler(event)}><CloudUploadIcon className={styles["cloud-icon"]} /><p className={styles.selector}>SELECT RESUME</p></button>:
+           {fileInput?<button className={styles["resume-button"]} onClick={(event)=>onFileHandler(event)}><CloudUploadIcon className={styles["cloud-icon"]} /><p className={styles.selector}>SELECT RESUME</p></button>:
            <button className={styles["resume-button"]}><p className={styles["resume-selected"]}>RESUME SELECTED</p></button>}
            </div>
           <div className={styles["checkbox-one"]}> <input type="checkbox" id="checkOne" name ="resumeenhancing" defaultChecked/><label htmlFor="checkOne">Resume Enhancing</label></div>

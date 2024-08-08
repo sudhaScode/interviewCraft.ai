@@ -144,7 +144,7 @@
         margin-top: 0;
     }
     .chat-conatiner-one{
-        margin-top: 0;
+        margin-top: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -165,7 +165,7 @@
         
     }
     .chat-conatiner-one{
-        margin-top: 0px !important;
+        margin-top: 15px;
         display: flex;
         align-items: center;
         justify-content: center;

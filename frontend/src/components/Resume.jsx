@@ -92,7 +92,7 @@ function Resume() {
            <form onSubmit={onUploadFile} >
            <input name="fileinput" type="file" required style={{display:"none"}} ref={inputRef} id="filePlaceholder" onChange={onFileChange}/>
            <div>
-           {fileInput?<button className={styles["resume-button"]} onClick={(event)=>onFileHandler(event)}><CloudUploadIcon className={styles["cloud-icon"]} /><p className={styles.selector}>SELECT RESUME</p></button>:
+           {!fileInput?<button className={styles["resume-button"]} onClick={(event)=>onFileHandler(event)}><CloudUploadIcon className={styles["cloud-icon"]} /><p className={styles.selector}>SELECT RESUME</p></button>:
            <button className={styles["resume-button"]}><p className={styles["resume-selected"]}>RESUME SELECTED</p></button>}
            </div>
           <div className={styles["checkbox-one"]}> <input type="checkbox" id="checkOne" name ="resumeenhancing" defaultChecked/><label htmlFor="checkOne">Resume Enhancing</label></div>

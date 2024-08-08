@@ -126,4 +126,40 @@
 .send-icon{
     width: 30px;
     height: 26px;
-}
+}  
+  @media screen and (max-width: 768px) {
+
+    .chat-conatiner{
+        margin-top: 21px;
+    }
+    .chat-conatiner-one{
+        margin-top: 21px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+  }
+
+
+  @media screen and (max-width: 400px) {
+
+    .chat-conatiner{
+        margin-top: 10px;
+        
+    }
+    .chat-conatiner-one{
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .style-container{
+        width: 100%;
+        border-radius: 20px;
+    }
+    .prompt-window{
+        width: 100%;
+        font-size: medium;
+        border-radius: 20px;
+    }
+  }

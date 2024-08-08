@@ -1,3 +1,6 @@
+#normal-interface{
+    display: none;
+}
 .split{
     display: flex;
     flex-direction: row;
@@ -9,6 +12,7 @@
     min-width: 23vw;
     max-width: 38vw;
     height: 90vh;
+    position: relative;
 }
 .gutter {
     background-color: rgb(225, 182, 182);
@@ -31,4 +35,19 @@
 .right-pane{
     min-width: 72vw;
     height: 100%;
+}
+
+@media screen and (max-width:767px) {
+#splitter{
+    display: none;
+
+}
+#normal-interface{
+    display: block;
+    position: relative;
+    height: 90vh;
+}
+.top-content{
+    width: 100%;
+}
 }

@@ -2,7 +2,8 @@ import React, {useState} from "react";
 import "./Splitter.css";
 import Split from "react-split";
 import LeftPaneMenu from "../LeftPaneMenu";
-import ChatBot from "../chatinterface/ChatBot"
+import ChatBot from "../chatinterface/ChatBot";
+import Resume from "../Resume"
 /*  
 import Chatbot from "react-chatbot-kit";
 import "react-chatbot-kit/build/main.css";
@@ -15,7 +16,9 @@ function Splitter(){
   
   //console.log("islogin", isLogin)
     return(
-        <Split className="split" gutterAlign="end">
+        <>
+       
+        <Split className="split" gutterAlign="end" id="splitter">
             <div className="left-pane">
                 <LeftPaneMenu  />
             </div>
@@ -23,6 +26,13 @@ function Splitter(){
             <ChatBot />
             </div>
         </Split>
+        <div id="normal-interface">
+             <ChatBot />
+             <div className="top-content">
+                 <Resume/>
+             </div>
+        </div>
+   </>
     );
 }
 

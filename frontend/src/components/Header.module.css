@@ -1,27 +1,26 @@
 .header{
     height: 10%;
     width: 100%;
-    background-color: rgb(202, 154, 154);
+    background-color: rgb(236, 181, 181);
     display: flex;
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 1px 1px 4px 1px black;
-
-
+    box-shadow: 1px 1px 4px 1px rgb(86, 70, 70);
 }
 .logo{
     margin-left: 1.5rem;
     cursor: pointer;
     text-decoration: none;
     color: black;
+    font-size: 0.8rem;
 }
 .login{
     margin-right: 3rem;
     background-color: transparent;
     border: none;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     font-weight: 800;
     cursor: pointer;
     text-align: center;
@@ -29,4 +28,33 @@
 .login:hover{
     background-color: rgba(240, 248, 255, 0.596);
     border-radius: 10px;
+}
+
+@media screen and (max-width:767px) {
+    .header{
+        height: 8vh;
+    }
+    .logo{
+        font-size: 9px !important;
+       
+    }
+    .login{
+        font-size: 14px !important;
+     
+    }  
+}
+
+@media screen and (max-width:500px) {
+    .header{
+       height: 7vh;
+    }
+    .logo{
+        font-size: 7.5px !important;
+       
+    }
+    .login{
+        font-size: 12px !important;
+        margin-right: 1.5rem;
+     
+    }  
 }

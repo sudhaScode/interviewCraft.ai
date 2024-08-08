@@ -73,3 +73,9 @@
   height: 78.5vh;
   background-color: #F9EFEF;
 }
+
+/* @media screen and (max-width: 767px) {
+  .App{
+    height: 100%;
+  }  
+} */

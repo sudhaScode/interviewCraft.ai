@@ -38,7 +38,7 @@ function PromptsMenu() {
     }
 
     const resetHanlder=()=>{
-        disptch(handleUpload(false  ))
+        disptch(handleUpload(false))
         localStorage.clear("fileName")
         sessionStorage.setItem("uploaded", "false")
     }
@@ -46,7 +46,7 @@ function PromptsMenu() {
         <div className={styles["left-nav"]}>
             <div className={styles["nav-conatiner"]}>
                     <button className={styles["dropdown-prompts"]} onMouseOver={() => { setShow(true) }}>
-                        prompts<KeyboardArrowDownIcon className={styles["drop-icon"]} />
+                        Prompts<KeyboardArrowDownIcon className={styles["drop-icon"]} />
                     </button>
                 {show &&
                         <div className={styles["prompt-menu"]} onMouseLeave={() => { setShow(false) }}>

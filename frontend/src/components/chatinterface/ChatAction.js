@@ -75,15 +75,15 @@ function ChatAction({isMock}){
             setCount(prev=>prev+1)
         }
         try{
-            const response = await axios.post(URL, body );
-            //console.log(response)
-            if(response.status === 200){
-                const data=  await response.data;
-                return data;
-            }
-            else{
-                throw Error("Prompt Failed")
-            }
+            // const response = await axios.post(URL, body );
+            // //console.log(response)
+            // if(response.status === 200){
+            //     const data=  await response.data;
+            //     return data;
+            // }
+            // else{
+            //     throw Error("Prompt Failed")
+            // }
         }
         catch(error){
             throw error

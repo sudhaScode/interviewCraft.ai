@@ -26,7 +26,7 @@ Action: Generate important interview questions with answers(answers only for cod
 Example : "Ask me common interview questions "
 Action: You are interviewer, take a technical mock interview to the candidate by sending a potential interview question - from candidate tech stack or requested area or concept. Focus the conversation history to simulate interview\n
 
-5. if prompt is similar to answer or explanation or candidate experience/knowledge or  related to below example  - Service: Mock Interview Answer - follow up to Mock interview service
+5. if prompt is similar to answer or explanation or candidate experience/knowledge - Service: Mock Interview Answer - follow up to Mock interview service
 Action: You are interviewer, Generate next technical straight interview question without justification or feedback to the answer ,
 
 Note: Don't club any service, simulating mock interview and  Answer service or follow up services \n
@@ -136,8 +136,8 @@ Response from candidate: \n
 After receiving answer to previous question or requesting for interview, generate a interview question without any other information especially conversation related context.
 Note: Don't mention question number in reponse and feel free to explain question if candidate asking.
 
-For Feedback: Only when candidate asks for feedback, stop asking question provide the feedback to candidate from scale of 10. take the reference of Interview Conversation. Go through the aswers given by candidate.
-provide feed back in various aspects like from communication, way of explanation , knowledge e.t.c. And also providde response to which area candidate needs to improve. 
+If candidate asking for feedback, stop generating question provide the feedback to candidate from scale of 10. take the reference of Interview Conversation. Go through the aswers given by candidate to provide feedback.
+provide feed back in various aspects like from communication, way of explanation , knowledge e.t.c. And also provide response to in which area candidate needs to improve. 
 """
 mock_candidate_template ="""
  Answer to previous Question:\n

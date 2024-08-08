@@ -1,6 +1,6 @@
 .form-container{
     position: absolute;
-    left:20%;
+    left:17%;
     top: 30%;
 }
 
@@ -84,6 +84,8 @@
         position: absolute;
         background-color: rgb(162, 162, 193);
         padding: 1rem;
-        left:28%;
+        left:0%;
+        top: 32%;
+        border-radius: 0px 10px 10px 0px;
     }
 }

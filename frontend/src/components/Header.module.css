@@ -35,11 +35,11 @@
         height: 8vh;
     }
     .logo{
-        font-size: 9px !important;
+        font-size: 10px !important;
        
     }
     .login{
-        font-size: 14px !important;
+        font-size: 16px !important;
      
     }  
 }
@@ -49,11 +49,11 @@
        height: 7vh;
     }
     .logo{
-        font-size: 7.5px !important;
+        font-size: 10px !important;
        
     }
     .login{
-        font-size: 12px !important;
+        font-size: 1rem !important;
         margin-right: 1.5rem;
      
     }  

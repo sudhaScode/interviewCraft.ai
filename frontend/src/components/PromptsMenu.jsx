@@ -3,7 +3,8 @@ import styles from "./PromptsMenu.module.css";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { resume, interview, mock } from "../constants/prompts";
 import { useDispatch } from "react-redux";
-import {handleUpload} from "../Reduxstore/Store"
+import {handleMock, handleUpload, push} from "../Reduxstore/Store"
+import { useNavigate } from "react-router-dom";
 
 function PromptsMenu() {
 
@@ -11,8 +12,8 @@ function PromptsMenu() {
     const [isResume, setIsResume] = useState(false);
     const [isInterview, setIsInterview] = useState(false);
     const [isMock, setIsMock] = useState(false);
-    const disptch = useDispatch()
-
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
     const onClickoptionHandler=(event)=>{
       let eventName = event.target.name;
       //console.log("EVENT DEBUG:: ", eventName )
@@ -38,9 +39,16 @@ function PromptsMenu() {
     }
 
     const resetHanlder=()=>{
-        disptch(handleUpload(false))
-        localStorage.clear("fileName")
-        sessionStorage.setItem("uploaded", "false")
+        dispatch(handleUpload(false))
+        localStorage.clear("fileName")    
+        dispatch(handleMock(false))
+        const message =  {
+            name: "Craft.ai",
+            key: "bot-resume-res",
+            response:"Hey! You asked to reset services, please upload your resume to get start again...",
+            componentType: "Resume"
+        }
+        dispatch(push(message))
     }
     return (
         <div className={styles["left-nav"]}>

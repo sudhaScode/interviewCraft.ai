@@ -124,12 +124,11 @@
   }
 
 .reset{
-    position: absolute;
-    bottom: 0;
-    left: 0%;
     width: 60px;
     height: 25px;
     cursor: pointer;
+    position: fixed;
+    bottom: 0.6%;
 }
 
 @media screen and (max-width:768px) {
@@ -139,6 +138,7 @@
        
     }
     .reset{
+        position: absolute;
         bottom: 50%;
         left: 1%;
       
@@ -172,4 +172,15 @@
        padding-bottom: 10px;
     }
     
+}
+
+@media screen and (max-width:430px) {
+    .left-nav{
+        margin-top: 3px;
+        background-color: rgba(236, 181, 181, 0.619);
+       
+    }
+    .reset{
+        bottom: 0;
+    }
 }

@@ -8,8 +8,7 @@
     margin-top: 20px;
     background-image: linear-gradient(to bottom,  rgb(244, 227, 227), 95%, rgb(241, 171, 171) 100%);
     background-repeat: no-repeat;
-    background-size: 100% 100%;
-   
+    background-size: 100% 100%;   
 }
 .container{
     position: relative;
@@ -170,6 +169,7 @@
 .upload-resume{
   display: none;
 }
+
 @media screen and (max-width: 768px) {
   .container{
    height: 95%;
@@ -202,11 +202,12 @@
   .upload-resume{
     display: block;
   }
+
   
 }
 
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 430px) {
   .container{
    height: 100%;
   }
@@ -218,5 +219,8 @@
   .container-bot-message {
     font-size: 15px;
   }
-  
+  .check-mock{
+    font-size:10px ;
+  }
+
 }

@@ -3,7 +3,8 @@ import styles from "../Header.module.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { handleAuth, handleUpload } from "../../Reduxstore/Store";
+import { handleAuth, handleUpload, reset, push} from "../../Reduxstore/Store";
+
 
 
 
@@ -17,7 +18,7 @@ function NavBar(){
 
     const loginHandler =(event)=>{
         //console.log(event.target.name)
-        if(event.target.name === "login"){
+        if(!isLogin){
             navigate("/login")
         }
         else{
@@ -26,7 +27,7 @@ function NavBar(){
             sessionStorage.clear("uploaded")
             dispatch(handleAuth(false))
             dispatch(handleUpload(false))
-            //dispatch(push(chatInitialState))
+            dispatch(reset())
         }
             
     }

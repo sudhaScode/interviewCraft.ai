@@ -11,7 +11,7 @@
     background-color: rgb(226, 201, 201);
     min-width: 23vw;
     max-width: 38vw;
-    height: 90vh;
+    /* height: fi; */
     position: relative;
 }
 .gutter {

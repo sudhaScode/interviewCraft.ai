@@ -2,7 +2,8 @@ import React, {useRef, useState, useEffect} from "react";
 import styles from "./Resume.module.css";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useDispatch, useSelector } from "react-redux";
-import { handleUpload, push  } from "../Reduxstore/Store"
+import { handleUpload, push , update } from "../Reduxstore/Store"
+import { URL_ENDPOINT } from "../constants/Config";
 
 
 
@@ -24,6 +25,7 @@ function Resume({className}) {
     }   
   }
   const onUploadFile= async(event)=>{
+    setIsError(false)
     setLoader(true);
     event.preventDefault();
     /*
@@ -48,28 +50,21 @@ function Resume({className}) {
       try{
         const fileData = new FormData();
         fileData.append('file', fileInput)
-      const response = await fetch("http://127.0.0.1:8000/load", {
+      const response = await fetch(`${URL_ENDPOINT}/load`, {
         method : "POST",
       body: fileData
     })
       if(response.ok){
         //console.log("RESPONSE DEBUG::",response)
         setLoader(false);
-        sessionStorage.setItem("uploaded", true)
         dispatch(handleUpload(true))
+        dispatch(update())
         const message =  {
           name: "Craft.ai",
           key: "bot-resume-res",
-          response:"Thanks for providing the resume, I am here to help you..."
+          response:"Thanks for providing the resume, I'm excited to help you with your career journey. I offer a range of services to help you stand out in the job market, including resume enhancement, interview preparation, and mock interviews.\nLet me know how I can assist you today!"
       }
-       // const persistedMessages =JSON.parse( sessionStorage.getItem("messages"))
-      // persistedMessages.push(message)
-      let storeMessage = [...messages, message]
-        sessionStorage.setItem("messages", JSON.stringify(storeMessage))
-    
-         //pushChat(message);
          dispatch(push(message))
-        //sessionStorage.setItem("messages", JSON.stringify(messages))
         
        }
      }
@@ -80,17 +75,7 @@ function Resume({className}) {
       console.log("An error occured", error)
      }
   }
-  // const isUploaded = useSelector(state=>state.flow.isUploaded)
-  //   useEffect(()=>{
-        
-  //       // if(!areMessages){
-  //       //    sessionStorage.setItem("messages", JSON.stringify(messages)) 
-  //       // }
-  //       if(isUploaded){
-           
-  //        }
-  //   },[isUploaded])
-  console.log(className)
+
     return (
         <div className={`${styles["form-container"]} ${className}`}>
            <form onSubmit={onUploadFile} >
@@ -105,7 +90,7 @@ function Resume({className}) {
            <button type="submit" className={!fileInput?styles["submit-button"]:styles["submit-button-activated"]}>UPLOAD</button>
            </form>
            {loader && <p className={styles.selected}>Setting up prompts...</p>}
-           {iSError && <p className={styles.error}>An Error Occurred, Try Again...</p>}
+           {iSError && <p className={styles.error}>Upload Failed, Try Again...</p>}
         </div>
     );
 }

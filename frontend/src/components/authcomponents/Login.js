@@ -17,17 +17,14 @@ function Login() {
     const [password, setPassword] = useState();
     const [invalid,setInvalid] = useState(false);
     const [loading,setLoading] = useState(false);
-    const persistedMSG = useSelector(state=>state.chat.messages)
-
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const active = window.localStorage.getItem("session")==="active"?true:false;
+    const active =  useSelector(state=>state.flow.isLogin)
 
   // TODO: Implement login functionality
   //Event Lisnter from child
 
   const  handleSubmit= (data)=>{
-    sessionStorage.setItem("messages", JSON.stringify(persistedMSG))
    
     setInvalid(false);
 
@@ -58,7 +55,7 @@ const  validation=async (username,password)=>{
         setInvalid(false);
         setLoading(true);
         setTimeout(()=>{
-            window.localStorage.setItem("session", "active");
+            localStorage.setItem("session", "active");
             dispatch(handleAuth(true))
             const message =  {
                 name: "Craft.ai",
@@ -66,10 +63,7 @@ const  validation=async (username,password)=>{
                 response:"Hey! You are logged in, please upload your resume to get start...",
                 componentType: "Resume"
             }
-            const persistedMessages =JSON.parse( sessionStorage.getItem("messages"))
-            persistedMessages.push(message)
             navigate("/prompt")
-            sessionStorage.setItem("messages", JSON.stringify(persistedMessages))
             dispatch(push(message))
         },2000);
     }

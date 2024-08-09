@@ -1,3 +1,4 @@
+
 .chat-conatiner{
     width: 100%;
     display: flex;
@@ -138,20 +139,33 @@
     width: 30px;
     height: 26px;
 }  
+
+.feedback-button{
+    position:fixed;
+    z-index: 5;
+    bottom: 140px;
+    right: 1px;
+    font-family: Roboto;
+    padding: 3px;
+    cursor: pointer;
+  }
   @media screen and (max-width: 768px) {
 
     .chat-conatiner{
         margin-top: 0;
     }
     .chat-conatiner-one{
-        margin-top: 30px;
+        margin-top: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
+       
+        
     }
     .style-container-one{
         border-radius: 5px;
-        margin-top: 50px;
+        margin-top: 0px;
+        height: 3.5rem;
     }
     .header{
         bottom: 18%; 
@@ -159,6 +173,17 @@
     .header-one{
         bottom: 18%; 
     }
+    .chat-conatiner{
+        height: 20vh;
+    }
+    .chat-conatiner-one{
+        height: 18vh;
+        margin-top: 0px;
+    }
+    .feedback-button{
+
+        bottom: 26%;
+      }
   }
 
 
@@ -169,18 +194,18 @@
         
     }
     .chat-conatiner-one{
-        margin-top: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        height: 15vh;
+        margin-top: 0px;
     }
     .style-container{
         width: 100%;
         border-radius: 20px;
         height: 80%;
+       
     }
     .style-container-one{
-       margin-top: 15px;
+       margin-top: 0px;
+       height: fit-content;
     }
     .prompt-window{
         width: 100%;
@@ -193,4 +218,8 @@
     .header-one{
         bottom: 16%; 
     }
+    .feedback-button{
+
+        bottom: 90px;
+      }
   }

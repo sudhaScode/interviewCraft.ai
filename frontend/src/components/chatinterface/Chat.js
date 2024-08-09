@@ -3,12 +3,15 @@ import { useRef, useEffect } from "react";
 import {Marked} from 'marked';
 import ReactMarkdown from "react-markdown"
 import Resume from "../Resume";
+import { useSelector } from "react-redux";
 export const botimage = "https://images.unsplash.com/photo-1586374579358-9d19d632b6df?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 export const userimage = "https://images.unsplash.com/photo-1696429175928-793a1cdef1d3?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 function Chat({messages}) {
     //console.log(messages)
     const marked = new Marked({ gfm: true });
     const chatEndRef = useRef(null);
+    const isUploaded = useSelector(state=>state.flow.isUploaded)
+    const isLogin = useSelector(state=>state.flow.isLogin)
 
     const getMarkdownText = (markdownText) => {
         return { __html: marked.parse(markdownText) };
@@ -37,16 +40,17 @@ function Chat({messages}) {
                     {/* <ReactMarkdown children ={chat.response   }/> */
                     !chat.componentType?
                     <div className={styles["container-bot-message"]}  dangerouslySetInnerHTML={getMarkdownText(chat.response)}>  
-                    </div>: <div className={`${styles["container-bot-message"]} ${styles["container-bot-upload"]}`}>{chat.response}<Resume className={styles["upload-resume"]}/></div>}
-                </div> : <div className={styles["user-container"]}>
+                    </div>: <div className={isUploaded ? styles["container-bot-message"]: isLogin ? `${styles["container-bot-message"]} ${styles["container-bot-upload"]}`: styles["container-bot-message"]}>{chat.response}{(!isUploaded &&isLogin)&& <Resume className={styles["upload-resume"]}/> }</div>}
+                </div> : <> <div className={styles["user-container"]}>
                     <div className={styles.header}>
                         <span>{chat.name}</span>
                         <img src={userimage} alt={chat.name} className={styles["chat-img"]} />
                     </div>
+    
                     <div className={styles["container-user-message"]}>
                         <div>{chat.response.map((prompt, index)=><p key={index}>{prompt}<br></br></p>)}</div>
                     </div>
-                </div>}
+                </div> </>}
             </div>))}
             <div ref={chatEndRef}/>
         </div>

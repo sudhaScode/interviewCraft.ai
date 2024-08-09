@@ -12,6 +12,7 @@ function Resume({className}) {
     //const [timerId, setTimerID] = useState("");
     const [fileInput, setInput] = useState(null);
     const [loader, setLoader] = useState(false);
+    const [iSError, setIsError] = useState(false)
     const dispatch = useDispatch();
     let messages = useSelector(state=>state.chat.messages)
 
@@ -73,6 +74,9 @@ function Resume({className}) {
        }
      }
      catch(error){
+      setIsError(true)
+      setLoader(false)
+      fileInput(null)
       console.log("An error occured", error)
      }
   }
@@ -101,6 +105,7 @@ function Resume({className}) {
            <button type="submit" className={!fileInput?styles["submit-button"]:styles["submit-button-activated"]}>UPLOAD</button>
            </form>
            {loader && <p className={styles.selected}>Setting up prompts...</p>}
+           {iSError && <p className={styles.error}>An Error Occurred, Try Again...</p>}
         </div>
     );
 }

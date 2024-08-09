@@ -47,6 +47,12 @@
     font-weight: bold;
     
 }
+.error{
+    margin: 0;
+    padding: 10px;
+    font-weight: bold;
+    color: red;
+}
 .checkbox-one,
 .checkbox-two,
 .checkbox-three{

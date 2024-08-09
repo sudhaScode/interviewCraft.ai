@@ -32,9 +32,6 @@ function Splitter(){
         </Split>
         <div id="normal-interface">
              <ChatBot />
-             <div className="top-content">
-             { isLogin && !isUploaded && <Resume />}
-             </div>
              <div className="prompt-container">
                 {isUploaded && <PromptsMenu/>  }  
              </div>

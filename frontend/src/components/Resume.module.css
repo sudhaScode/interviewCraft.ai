@@ -14,7 +14,7 @@
 .resume-button{
     background-color: rgb(217, 217, 217);
     border: none;
-    width: 160px;
+    width: 170px;
     height: 42px;
     font-weight: bold;
     font-size: medium; 
@@ -79,13 +79,42 @@
     background-color: rgba(132, 182, 99, 0.747);
 }
 
-@media screen and (max-width:767px) {
+/* @media screen and (max-width:767px) {
     .form-container{
         position: absolute;
         background-color: rgb(162, 162, 193);
         padding: 1rem;
         left:0%;
-        top: 32%;
+        top: 43%;
         border-radius: 0px 10px 10px 0px;
     }
+} */
+
+@media screen and (max-width:767px) {
+    .form-container{
+        display: flex;
+        justify-content: center;
+        background-color: rgb(162, 162, 193);
+        padding: 1rem;
+        border-radius: 10px;
+        left:30%;
+        top: 22%;
+    }
+    .resume-button{
+        width: 175px;
+    }   
+}
+@media screen and (max-width:430px) {
+    .form-container{
+        display: flex;
+        justify-content: center;
+        background-color: rgb(162, 162, 193);
+        padding: 1rem;
+        border-radius: 10px;
+        left:10%;
+        top: 22%;
+    }
+    .resume-button{
+        width: 175px;
+    }   
 }

@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage';
 
 
 const flowInitialState ={
-    isLogin: sessionStorage.getItem("session")?true:false,
+    isLogin: localStorage.getItem("session")?true:false,
     isUploaded: sessionStorage.getItem("uploaded")?true:false
 }
 const flowSlice = createSlice({

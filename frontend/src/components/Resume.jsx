@@ -6,7 +6,7 @@ import { handleUpload, push  } from "../Reduxstore/Store"
 
 
 
-function Resume() {
+function Resume({className}) {
     const inputRef = useRef("");
     // const [filePlaceholder, setFilePlaceholder] = useState("SELECT RESUME");
     //const [timerId, setTimerID] = useState("");
@@ -86,9 +86,9 @@ function Resume() {
            
   //        }
   //   },[isUploaded])
-  
+  console.log(className)
     return (
-        <div className={styles["form-container"]}>
+        <div className={`${styles["form-container"]} ${className}`}>
            <form onSubmit={onUploadFile} >
            <input name="fileinput" type="file" required style={{display:"none"}} ref={inputRef} id="filePlaceholder" onChange={onFileChange}/>
            <div>

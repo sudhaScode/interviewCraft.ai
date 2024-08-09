@@ -5,6 +5,7 @@ import LeftPaneMenu from "../LeftPaneMenu";
 import ChatBot from "../chatinterface/ChatBot";
 import Resume from "../Resume";
 import { useSelector } from "react-redux";
+import PromptsMenu from "../PromptsMenu";
 /*  
 import Chatbot from "react-chatbot-kit";
 import "react-chatbot-kit/build/main.css";
@@ -33,6 +34,9 @@ function Splitter(){
              <ChatBot />
              <div className="top-content">
              { isLogin && !isUploaded && <Resume />}
+             </div>
+             <div className="prompt-container">
+                {isUploaded && <PromptsMenu/>  }  
              </div>
         </div>
    </>

@@ -1,6 +1,7 @@
 
 .left-nav{
     margin-top: 10px; 
+    position: relative;
 }
 .nav-conatiner{
     position: relative;
@@ -129,4 +130,46 @@
     width: 60px;
     height: 25px;
     cursor: pointer;
+}
+
+@media screen and (max-width:768px) {
+    .left-nav{
+        margin-top: 1.5rem;
+        background-color: rgba(236, 181, 181, 0.619);
+       
+    }
+    .reset{
+        bottom: 50%;
+        left: 1%;
+      
+    }
+    .dropdown-prompts{
+        font-size: 1.5rem;
+    }
+    .drop-icon{
+
+        /* font-size: 2.3rem !important; */
+    }
+
+    .prompts-container{
+        height: fit-content;
+        width: fit-content;
+        background-color:  rgb(244, 227, 227);
+        overflow: auto;
+        font-weight: 500;
+        margin-right: 0px;
+        position: absolute;
+        margin-left: 0px;
+    }
+
+    .predefined{
+
+        margin-left: 5px;
+
+    }
+    .prompts-container p{
+       padding-left: 10px;
+       padding-bottom: 10px;
+    }
+    
 }

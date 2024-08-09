@@ -144,7 +144,7 @@
         margin-top: 0;
     }
     .chat-conatiner-one{
-        margin-top: 20px;
+        margin-top: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -152,8 +152,12 @@
     .style-container-one{
         border-radius: 5px;
         margin-top: 50px;
-
-    
+    }
+    .header{
+        bottom: 18%; 
+    }
+    .header-one{
+        bottom: 18%; 
     }
   }
 
@@ -182,5 +186,11 @@
         width: 100%;
         font-size: medium;
         border-radius: 20px;
+    }
+    .header{
+        bottom: 16%; 
+    }
+    .header-one{
+        bottom: 16%; 
     }
   }

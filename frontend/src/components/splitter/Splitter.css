@@ -50,4 +50,9 @@
 .top-content{
     width: 100%;
 }
+.prompt-container{
+    /* position: absolute;
+    top:0px;
+    right: 30px; */
+}
 }

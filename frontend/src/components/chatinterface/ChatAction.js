@@ -9,6 +9,7 @@ import { mock } from "../../constants/prompts";
 
 function ChatAction({ isMock }) {
     const isUploaded = useSelector(state => state.flow.isUploaded);
+    const storedMessages = useSelector(state => state.chat.messages);
     const [isPrompting, setIsPrompting] = useState(false);
     const [prompt, setPrompt] = useState([]);
     const [count, setCount] = useState(0);
@@ -44,12 +45,12 @@ function ChatAction({ isMock }) {
           setIsPrompting(true);
         setError(null);
         if(count>=0)
-            dispatch(push({ name: "User", key: "user-resume-mes", response: [request] }));
+            dispatch(push({ name: "User", key: `user-resume-mes${storedMessages.length}`, response: [request] }));
 
         try {
             const data = await fetchAPI(request);
             if(count >=0)
-                dispatch(push({ name: "Craft.ai", key: "bot-init-res", response: data.response }));
+                dispatch(push({ name: "Craft.ai", key: `bot-init-res${storedMessages.length}`, response: data.response }));
             if (ref.current) ref.current.value = "";
             setPrompt([]);
         } catch {
@@ -58,7 +59,7 @@ function ChatAction({ isMock }) {
         } finally {
             setIsPrompting(false);
         }
-    }, [fetchAPI, dispatch, count]);
+    }, [fetchAPI, dispatch, count, storedMessages.length]);
 
     const handleInputChange = useCallback((event) => {
         setPrompt(event.target.value.split('\n'));
@@ -67,7 +68,7 @@ function ChatAction({ isMock }) {
     const feedBackHandler = useCallback(async () => {
         const fileName = localStorage.getItem("fileName");
         try {
-            const response = await axios.post(`${URL_ENDPOINT}/mock`, { answer: "Please provide the feedback.", file_name: fileName, qnsno: 1000 });
+            const response = await axios.post(`${URL_ENDPOINT}/mock`, { answer: `Please provide the feedback.${storedMessages.length}`, file_name: fileName, qnsno: 1000 });
             if (response.status === 200) {
                 dispatch(push({ name: "Craft.ai", key: "bot-init-res", response: response.data.response }));
             }
@@ -75,7 +76,7 @@ function ChatAction({ isMock }) {
         } catch {
             setError("Failed to send feedback. Please try again.");
         }
-    }, [dispatch]);
+    }, [dispatch, storedMessages.length]);
 
     const sendPrompt = useCallback(() => {
         onPromptHandler({ target: { prompt: { value: mock[2] } } });
@@ -83,8 +84,8 @@ function ChatAction({ isMock }) {
     }, [onPromptHandler]);
 
     const startInterview =useCallback(()=>{
-        onPromptHandler({target:{prompt: {value:"I am getting ready for interview"}}})
-    }, [onPromptHandler])
+        onPromptHandler({target:{prompt: {value:`I am getting ready for interview${storedMessages.length}`}}})
+    }, [onPromptHandler,storedMessages.length])
 
     useEffect(() => {
         if (!isMock) setCount(0);

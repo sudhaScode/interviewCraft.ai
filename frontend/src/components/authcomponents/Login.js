@@ -23,6 +23,7 @@ function Login() {
 
     const handleSubmit = (data) => {
         setInvalid(false);
+        setLoading(true)
 
         // store the credentials
         const username = data.username;
@@ -62,10 +63,11 @@ function Login() {
     useEffect(() => {
         if (active) {
             navigate("/prompt");
+            setLoading(false)
         }
-        return ()=>{
-            clearTimeout(timeoutRef.current)
-        }
+        // return ()=>{
+        //     clearTimeout(timeoutRef.current)
+        // }
     }, [active, navigate]);
 
     return (

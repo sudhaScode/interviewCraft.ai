@@ -1,19 +1,25 @@
-#normal-interface{
+/* Styles for the Splitter Component */
+#normal-interface {
     display: none;
 }
-.split{
+
+/* Flexbox container for splitting */
+.split {
     display: flex;
     flex-direction: row;
     height: 100%;
-
 }
-.left-pane{
+
+/* Left Pane styles */
+.left-pane {
     background-color: rgb(226, 201, 201);
     min-width: 23vw;
     max-width: 38vw;
-    /* height: fi; */
+    /* Ensures pane height adapts to content */
     position: relative;
 }
+
+/* Gutter styles */
 .gutter {
     background-color: rgb(225, 182, 182);
     background-repeat: no-repeat;
@@ -24,35 +30,45 @@
     height: 90vh;
 }
 
+/* Horizontal gutter styles */
 .gutter.gutter-horizontal {
     background-image: url('/src/assets/dividershort.svg');
     cursor: ew-resize !important;
 }
+
+/* Hover and active states for gutter */
 .gutter:hover,
-.gutter:active{
+.gutter:active {
     background-color: rgb(146, 201, 244);
 }
-.right-pane{
+
+/* Right Pane styles */
+.right-pane {
     min-width: 72vw;
     height: 100%;
 }
 
-@media screen and (max-width:767px) {
-#splitter{
-    display: none;
+/* Responsive styles for smaller screens */
+@media screen and (max-width: 767px) {
+    #splitter {
+        display: none;
+    }
 
-}
-#normal-interface{
-    display: block;
-    position: relative;
-    height: 92vh; /*7 for header*/
-}
-.top-content{
-    width: 100%;
-}
-.prompt-container{
-    /* position: absolute;
-    top:0px;
-    right: 30px; */
-}
+    #normal-interface {
+        display: block;
+        position: relative;
+        height: 92vh; /* Adjusted for header and padding */
+    }
+
+    .top-content {
+        width: 100%;
+    }
+
+    .prompt-container {
+        /* Ensure the prompt container is positioned properly on small screens */
+        /* If specific positioning is needed, add here */
+          /* position: absolute;
+            top:0px;
+            right: 30px; */
+    }
 }

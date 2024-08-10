@@ -6,7 +6,7 @@ function Main(){
 
     return(
         <div className={styles.main}>
-       <Splitter/>
+            <Splitter/>
         </div>
     );
 

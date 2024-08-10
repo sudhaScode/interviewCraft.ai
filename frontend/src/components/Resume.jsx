@@ -1,96 +1,117 @@
-import React, {useRef, useState, useEffect} from "react";
+import React, { useRef, useState } from "react";
 import styles from "./Resume.module.css";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useDispatch, useSelector } from "react-redux";
-import { handleUpload, push , update } from "../Reduxstore/Store"
+import { handleUpload, push, update } from "../Reduxstore/Store";
 import { URL_ENDPOINT } from "../constants/Config";
 
-
-
-function Resume({className}) {
-    const inputRef = useRef("");
-    // const [filePlaceholder, setFilePlaceholder] = useState("SELECT RESUME");
-    //const [timerId, setTimerID] = useState("");
-    const [fileInput, setInput] = useState(null);
-    const [loader, setLoader] = useState(false);
-    const [iSError, setIsError] = useState(false)
+function Resume({ className }) {
+    const fileInputRef = useRef(null);
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [hasError, setHasError] = useState(false);
     const dispatch = useDispatch();
-    let messages = useSelector(state=>state.chat.messages)
 
-  const onFileHandler=(event)=>{
-    //const inputElement = document.getElementById("filePlaceholder");
-    event.stopPropagation();
-    if(inputRef.current){
-        inputRef.current.click();
-    }   
-  }
-  const onUploadFile= async(event)=>{
-    setIsError(false)
-    setLoader(true);
-    event.preventDefault();
-    /*
-    let timer = setTimeout(()=>{
-      //console.log("setting loader false");
-    setInput(false)}, 2000);
-    setTimerID(timer);*/
-   // console.log(file, "selected file");
-    //setFilePlaceholder("SELECT RESUME");
-    fetchAPI(fileInput)
- 
-  }
-  const onFileChange=  (event)=>{
-    event.stopPropagation()
-    const file = event.target.files[0];
-    localStorage.setItem("fileName", file.name)// for later use
-    setInput(file)
-    //const slectedFile = new FileReader();
-  }
-  const fetchAPI = async(fileInput)=>{
-    //console.log(fileInput)
-      try{
-        const fileData = new FormData();
-        fileData.append('file', fileInput)
-      const response = await fetch(`${URL_ENDPOINT}/load`, {
-        method : "POST",
-      body: fileData
-    })
-      if(response.ok){
-        //console.log("RESPONSE DEBUG::",response)
-        setLoader(false);
-        dispatch(handleUpload(true))
-        dispatch(update())
-        const message =  {
-          name: "Craft.ai",
-          key: "bot-resume-res",
-          response:"Thanks for providing the resume, I'm excited to help you with your career journey. I offer a range of services to help you stand out in the job market, including resume enhancement, interview preparation, and mock interviews.\nLet me know how I can assist you today!"
-      }
-         dispatch(push(message))
-        
-       }
-     }
-     catch(error){
-      setIsError(true)
-      setLoader(false)
-      fileInput(null)
-      console.log("An error occured", error)
-     }
-  }
+    const handleFileClick = (event) => {
+        event.stopPropagation();
+        fileInputRef.current?.click();
+    };
+
+    const handleFileChange = (event) => {
+        event.stopPropagation();
+        const file = event.target.files[0];
+        if (file) {
+            localStorage.setItem("fileName", file.name);
+            setSelectedFile(file);
+        }
+    };
+
+    const handleFileUpload = async (event) => {
+        event.preventDefault();
+        setIsLoading(true);
+        setHasError(false);
+
+        if (!selectedFile) return;
+
+        const formData = new FormData();
+        formData.append('file', selectedFile);
+
+        try {
+            const response = await fetch(`${URL_ENDPOINT}/load`, {
+                method: "POST",
+                body: formData,
+            });
+
+            if (response.ok) {
+                dispatch(handleUpload(true));
+                dispatch(update());
+
+                const message = {
+                    name: "Craft.ai",
+                    key: "bot-resume-res",
+                    response: "Thanks for providing the resume. I'm excited to help you with your career journey. I offer a range of services to help you stand out in the job market, including resume enhancement, interview preparation, and mock interviews. Let me know how I can assist you today!"
+                };
+                dispatch(push(message));
+                setSelectedFile(null); // Reset file input after successful upload
+            } else {
+                throw new Error("Upload failed");
+            }
+        } catch (error) {
+            setHasError(true);
+            console.error("An error occurred:", error);
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     return (
         <div className={`${styles["form-container"]} ${className}`}>
-           <form onSubmit={onUploadFile} >
-           <input name="fileinput" type="file" required style={{display:"none"}} ref={inputRef} id="filePlaceholder" onChange={onFileChange}/>
-           <div>
-           {!fileInput?<button className={styles["resume-button"]} onClick={(event)=>onFileHandler(event)}><CloudUploadIcon className={styles["cloud-icon"]} /><p className={styles.selector}>SELECT RESUME</p></button>:
-           <button className={styles["resume-button"]}><p className={styles["resume-selected"]}>RESUME SELECTED</p></button>}
-           </div>
-          <div className={styles["checkbox-one"]}> <input type="checkbox" id="checkOne" name ="resumeenhancing" defaultChecked/><label htmlFor="checkOne">Resume Enhancing</label></div>
-          <div className={styles["checkbox-two"]}> <input type="checkbox" id="checkTwo" name ="interviewpreparation" defaultChecked/><label htmlFor="checkTwo" >Interview Preparation</label></div>
-          <div className={styles["checkbox-three"]}> <input type="checkbox" id="checkThree" name ="mockinterview" defaultChecked/><label htmlFor="checkThree">Mock Interview</label></div>
-           <button type="submit" className={!fileInput?styles["submit-button"]:styles["submit-button-activated"]}>UPLOAD</button>
-           </form>
-           {loader && <p className={styles.selected}>Setting up prompts...</p>}
-           {iSError && <p className={styles.error}>Upload Failed, Try Again...</p>}
+            <form onSubmit={handleFileUpload}>
+                <input
+                    type="file"
+                    ref={fileInputRef}
+                    style={{ display: "none" }}
+                    onChange={handleFileChange}
+                    required
+                />
+                <div>
+                    {!selectedFile ? (
+                        <button
+                            type="button"
+                            className={styles["resume-button"]}
+                            onClick={handleFileClick}
+                        >
+                            <CloudUploadIcon className={styles["cloud-icon"]} />
+                            <p className={styles.selector}>SELECT RESUME</p>
+                        </button>
+                    ) : (
+                        <button type="button" className={styles["resume-button"]}>
+                            <p className={styles["resume-selected"]}>RESUME SELECTED</p>
+                        </button>
+                    )}
+                </div>
+                <div className={styles["checkbox-one"]}>
+                    <input type="checkbox" id="checkOne" name="resumeenhancing" defaultChecked />
+                    <label htmlFor="checkOne">Resume Enhancing</label>
+                </div>
+                <div className={styles["checkbox-two"]}>
+                    <input type="checkbox" id="checkTwo" name="interviewpreparation" defaultChecked />
+                    <label htmlFor="checkTwo">Interview Preparation</label>
+                </div>
+                <div className={styles["checkbox-three"]}>
+                    <input type="checkbox" id="checkThree" name="mockinterview" defaultChecked />
+                    <label htmlFor="checkThree">Mock Interview</label>
+                </div>
+                <button
+                    type="submit"
+                    className={!selectedFile ? styles["submit-button"] : styles["submit-button-activated"]}
+                    disabled={isLoading}
+                >
+                    UPLOAD
+                </button>
+            </form>
+            {isLoading && <p className={styles.selected}>Setting up prompts...</p>}
+            {hasError && <p className={styles.error}>Upload Failed, Try Again...</p>}
         </div>
     );
 }

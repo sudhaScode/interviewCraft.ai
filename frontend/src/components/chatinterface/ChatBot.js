@@ -27,7 +27,7 @@ function ChatBot(){
         dispatch(push(message))
     }
     const mockHandler=(event)=>{
-        console.log(mockENV)
+        // console.log(mockENV)
         
         if(!mockENV){
             setMockENV(true)

@@ -12,7 +12,7 @@ export const resume = [
         "Uploaded my resume for a [Job Title] position. Would appreciate suggestions on formatting, action verbs, and overall impact."
       ];
 export const interview= [
-        "Prepare for an interview? Provide practice questions and tips.",
+        "Prepare a list of interview questions on [skill/techstack]? Provide practice questions and tip.",
         "Generate potential technical interview questions for a [job title] role.",
         "Help me craft strong answers for a [Job Title] interview based on my skills and the job description." ,
         "Unsure about common interview questions for [Job Title]. Can you suggest some based on the job description and my experience?",

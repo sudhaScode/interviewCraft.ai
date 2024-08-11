@@ -37,6 +37,7 @@ function Resume({ className }) {
         formData.append('file', selectedFile);
 
         try {
+            console.log("here")
             const response = await fetch(`${URL_ENDPOINT}/load`, {
                 method: "POST",
                 body: formData,
@@ -54,9 +55,11 @@ function Resume({ className }) {
                 dispatch(push(message));
                 setSelectedFile(null); // Reset file input after successful upload
             } else {
+                
                 throw new Error("Upload failed");
             }
         } catch (error) {
+            console.log(error)
             dispatch(handleError(true))
             setSelectedFile(null);
             if(fileInputRef.current){

@@ -140,7 +140,7 @@ function ChatAction({ isMock }) {
                 </div>
             }
             <div className={isPromptMultipleLines ? styles["chat-container"] : styles["chat-container-one"]}>
-            {hasError && <div className={styles.error}>Request Failed. Please send prompt again...</div>}
+            {isUploaded  && hasError && <div className={styles.error}>Request Failed. Please send prompt again...</div>}
                 {isUploaded ? (
                     <form className={isPromptMultipleLines ? styles["form-container"] : styles["form-container-one"]} onSubmit={onPromptHandler}>
                         <textarea

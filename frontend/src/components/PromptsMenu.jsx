@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./PromptsMenu.module.css";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { resume, interview, mock } from "../constants/prompts";
 import { useDispatch, useSelector } from "react-redux";
-import { handleMock, handleUpload, push } from "../Reduxstore/Store";
+import { handleError, handleMock, handleUpload, push } from "../Reduxstore/Store";
 
 function PromptsMenu() {
     const [show, setShow] = useState(false);
@@ -12,11 +12,13 @@ function PromptsMenu() {
     const mockenv = useSelector(state => state.flow.isMock);
 
     const handleOptionClick = (promptType) => {
+        setShow(false)
         setActivePrompt(activePrompt === promptType ? "" : promptType);
     };
 
     const resetHandler = () => {
         dispatch(handleUpload(false));
+        dispatch(handleError(false))
         localStorage.removeItem("fileName");
         dispatch(handleMock(false));
         const message = {
@@ -27,6 +29,11 @@ function PromptsMenu() {
         };
         dispatch(push(message));
     };
+    useEffect(()=>{
+     if(show){
+        setActivePrompt("")
+     }
+    },[show])
 
     return (
         <div className={styles["left-nav"]}>
@@ -34,16 +41,16 @@ function PromptsMenu() {
                 <button 
                     className={styles["dropdown-prompts"]} 
                     onMouseOver={() => setShow(true)}
-                    
+                   
                 >
                     Prompts
                     <KeyboardArrowDownIcon className={styles["drop-icon"]} />
                 </button>
                 {show && (
                     <div className={styles["prompt-menu"]}>
-                        <ul  onMouseOut={() => setShow(false)}>
+                        <ul >
                             {!mockenv && (
-                                <>
+                                <> 
                                     <li>
                                         <button
                                             className={activePrompt === "resume" ? styles["menu-button-active"] : styles["menu-button"]}

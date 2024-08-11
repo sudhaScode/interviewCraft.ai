@@ -2,16 +2,16 @@ import React, { useRef, useState } from "react";
 import styles from "./Resume.module.css";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { useDispatch, useSelector } from "react-redux";
-import { handleUpload, push, update } from "../Reduxstore/Store";
+import { handleUpload, push, update , handleError} from "../Reduxstore/Store";
 import { URL_ENDPOINT } from "../constants/Config";
 
 function Resume({ className }) {
     const fileInputRef = useRef(null);
     const [selectedFile, setSelectedFile] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [hasError, setHasError] = useState(false);
     const dispatch = useDispatch();
-
+    const hasError = useSelector(state=>state.flow.hasError)
+    const isUploaded = useSelector(state=>state.flow.isUploaded)
     const handleFileClick = (event) => {
         event.stopPropagation();
         fileInputRef.current?.click();
@@ -21,15 +21,15 @@ function Resume({ className }) {
         event.stopPropagation();
         const file = event.target.files[0];
         if (file) {
-            localStorage.setItem("fileName", file.name);
+            sessionStorage.setItem("fileName", file.name);
             setSelectedFile(file);
         }
+        dispatch(handleError(false))
     };
 
     const handleFileUpload = async (event) => {
         event.preventDefault();
         setIsLoading(true);
-        setHasError(false);
 
         if (!selectedFile) return;
 
@@ -57,7 +57,11 @@ function Resume({ className }) {
                 throw new Error("Upload failed");
             }
         } catch (error) {
-            setHasError(true);
+            dispatch(handleError(true))
+            setSelectedFile(null);
+            if(fileInputRef.current){
+                fileInputRef.current.value = ""
+            }
             console.error("An error occurred:", error);
         } finally {
             setIsLoading(false);
@@ -111,7 +115,7 @@ function Resume({ className }) {
                 </button>
             </form>
             {isLoading && <p className={styles.selected}>Setting up prompts...</p>}
-            {hasError && <p className={styles.error}>Upload Failed, Try Again...</p>}
+            {hasError && !isUploaded && <p className={styles.error}>Upload Failed, Select Resume again</p>}
         </div>
     );
 }

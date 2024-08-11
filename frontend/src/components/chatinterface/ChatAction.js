@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState, useMemo } from "react";
 import styles from "./ChatAction.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { push } from "../../Reduxstore/Store";
+import { push, handleError } from "../../Reduxstore/Store";
 import axios from "axios";
 import { URL_ENDPOINT } from "../../constants/Config";
 import { botimage } from "./Chat";
@@ -10,16 +10,17 @@ import { mock } from "../../constants/prompts";
 function ChatAction({ isMock }) {
     const isUploaded = useSelector(state => state.flow.isUploaded);
     const storedMessages = useSelector(state => state.chat.messages);
+    const hasError = useSelector(state=>state.flow.hasError)
     const [isPrompting, setIsPrompting] = useState(false);
     const [prompt, setPrompt] = useState([]);
     const [count, setCount] = useState(0);
-    const [error, setError] = useState(null);
-    const ref = useRef(null);
+
+    const promptRef = useRef(null);
     const dispatch = useDispatch();
 
     const fetchAPI = useCallback(async (prompt) => {
-        const fileName = localStorage.getItem("fileName");
-        console.log("coutn:: ", count, prompt)
+        const fileName = sessionStorage.getItem("fileName");
+        // console.log("coutn:: ", count, prompt)
         const URL = isMock ? `${URL_ENDPOINT}/mock` : `${URL_ENDPOINT}/prompt`;
         const body = isMock 
             ? { answer: prompt, file_name: fileName, qnsno: count } 
@@ -32,7 +33,8 @@ function ChatAction({ isMock }) {
             if (response.status === 200) return response.data;
             throw new Error("Prompt Failed");
         } catch {
-            setError("An error occurred while processing your request. Please try again.");
+            // setError("An error occurred while processing your request. Please try again.");
+            // dispatch(handleError(true))
         }
     }, [isMock, count]);
 
@@ -41,76 +43,96 @@ function ChatAction({ isMock }) {
         if (event.preventDefault){
             event.preventDefault();
         }
-        if (count >=0)
+
           setIsPrompting(true);
-        setError(null);
-        if(count>=0)
+        // setError(null);
+        dispatch(handleError(false))
+
             dispatch(push({ name: "User", key: `user-resume-mes${storedMessages.length}`, response: [request] }));
 
         try {
             const data = await fetchAPI(request);
-            if(count >=0)
+
                 dispatch(push({ name: "Craft.ai", key: `bot-init-res${storedMessages.length}`, response: data.response }));
-            if (ref.current) ref.current.value = "";
+            if (promptRef.current) promptRef.current.value = "";
             setPrompt([]);
         } catch {
             // Error handling done in fetchAPI
-            setError("Service failed, Please try again")
+            // setError("Service failed, Please try again")
+            dispatch(handleError(true))
         } finally {
             setIsPrompting(false);
+
         }
-    }, [fetchAPI, dispatch, count, storedMessages.length]);
+    }, [fetchAPI, dispatch, storedMessages.length]);
 
     const handleInputChange = useCallback((event) => {
+        dispatch(handleError(false))
         setPrompt(event.target.value.split('\n'));
-    }, []);
+    }, [dispatch]);
 
     const feedBackHandler = useCallback(async () => {
-        const fileName = localStorage.getItem("fileName");
+        dispatch(handleError(false))
+        const fileName = sessionStorage.getItem("fileName");
         try {
-            const response = await axios.post(`${URL_ENDPOINT}/mock`, { answer: `Please provide the feedback.${storedMessages.length}`, file_name: fileName, qnsno: 1000 });
+            const response = await axios.post(`${URL_ENDPOINT}/mock`, { answer: `Stop interview. Please provide the Feedback for my performance. \n${storedMessages.length}`, file_name: fileName, qnsno: 1000 });
             if (response.status === 200) {
                 dispatch(push({ name: "Craft.ai", key: "bot-init-res", response: response.data.response }));
             }
-            setCount(-1)
+            else{
+                dispatch(handleError(true))
+            }
+            const responseMock = await axios.post(`${URL_ENDPOINT}/mock`, { answer: `It is just for your reference to keep resume candidate. don't ask question go through resume once \n${storedMessages.length}`, file_name: fileName, qnsno: -1 });
+            if (responseMock.status === 200) {
+                setCount(0)
+            }
+            else{
+                dispatch(handleError(true))
+            }
+            
+
         } catch {
-            setError("Failed to send feedback. Please try again.");
+            // setError("Failed to send feedback. Please try again.");
+            dispatch(handleError(true))
         }
     }, [dispatch, storedMessages.length]);
 
     const sendPrompt = useCallback(() => {
-        onPromptHandler({ target: { prompt: { value: mock[2] } } });
-        if (ref.current) ref.current.value = mock[3];
+        onPromptHandler({ target: { prompt: { value: mock[3] } } });
+        if (promptRef.current) promptRef.current.value = mock[3];
+        // setCount(prev=>prev+1) updating in fecth api
     }, [onPromptHandler]);
 
-    const startInterview =useCallback(()=>{
-        onPromptHandler({target:{prompt: {value:`I am getting ready for interview${storedMessages.length}`}}})
-    }, [onPromptHandler,storedMessages.length])
+    // const startInterview =useCallback(()=>{
+    //     onPromptHandler({ target: { prompt: { value: mock[3] } } });
+    //     if (promptRef.current) promptRef.current.value = mock[3];
+    //     setCount(1)
+    // }, [onPromptHandler])
 
     useEffect(() => {
         if (!isMock) setCount(0);
     }, [isMock]);
+    
 
     const isPromptMultipleLines = useMemo(() => prompt.length > 1, [prompt]);
 
     return (
         <>
-            {error && <div className={styles.error}>{error}</div>}
-            {isMock && count >= 6 && 
+            {isMock && count >= 1 && 
                 <button className={styles["feedback-button"]} onClick={feedBackHandler}>
                     Click me! For Feedback
                 </button>
             }
             {isMock && count === 0 &&
                 <button className={styles["feedback-button"]} onClick={sendPrompt}>
-                    Send a mock interview prompt
+                  Click me! to Start Interview
                 </button>
             }
-             {isMock && count === -1 &&
+             {/* {isMock && count === -1 &&
                 <button className={styles["feedback-button"]} onClick={startInterview}>
-                    Start interview again
+                    Click me! to Start Interview again
                 </button>
-            }
+            } */}
             {isPrompting &&
                 <div className={isPromptMultipleLines ? styles.header : styles["header-one"]}>
                     <img src={botimage} alt={"Craft.ai"} className={styles["chat-img"]} />
@@ -118,11 +140,12 @@ function ChatAction({ isMock }) {
                 </div>
             }
             <div className={isPromptMultipleLines ? styles["chat-container"] : styles["chat-container-one"]}>
+            {hasError && <div className={styles.error}>Request Failed. Please send prompt again...</div>}
                 {isUploaded ? (
-                    <form className={isPromptMultipleLines ? styles["style-container"] : styles["style-container-one"]} onSubmit={onPromptHandler}>
+                    <form className={isPromptMultipleLines ? styles["form-container"] : styles["form-container-one"]} onSubmit={onPromptHandler}>
                         <textarea
                             className={styles["prompt-input"]}
-                            ref={ref}
+                            ref={promptRef}
                             placeholder="Enter a prompt or Copy prompt from Prompts Menu"
                             name="prompt"
                             onChange={handleInputChange}
@@ -140,6 +163,7 @@ function ChatAction({ isMock }) {
                     />
                 )}
             </div>
+           
         </>
     );
 }

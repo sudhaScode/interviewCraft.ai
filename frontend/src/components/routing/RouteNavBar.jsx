@@ -31,12 +31,12 @@ function NavBar(){
         }
             
     }
-    useEffect(()=>{
-        const auth = localStorage.getItem("auth")
-        if(auth === "ba-ft-efo-er-re"){
-            dispatch(handleAuth)
-        }
-    },[])
+    // useEffect(()=>{
+    //     const auth = localStorage.getItem("auth")
+    //     if(auth === "ba-ft-efo-er-re"){
+    //         dispatch(handleAuth)
+    //     }
+    // },[])
 
     return(
         <div className={styles.header}>

@@ -46,7 +46,7 @@ function Login() {
         // setInvalid(false);
         // setLoading(true);
         timeoutRef.current =  setTimeout(() => {
-            localStorage.setItem("session", "active");
+            sessionStorage.setItem("session", "active");
             dispatch(handleAuth(true));
             const message = {
                 name: "Craft.ai",

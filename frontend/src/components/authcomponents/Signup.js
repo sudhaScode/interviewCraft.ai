@@ -11,7 +11,7 @@ function Signup() {
     const [loading,setLoading] = useState(false);
 
     const navigate = useNavigate();
-    const active = window.localStorage.getItem("session")==="active"?true:false;
+    const active = sessionStorage.getItem("session")==="active"?true:false;
 
   // TODO: Implement login functionality
   //Event Lisnter from child

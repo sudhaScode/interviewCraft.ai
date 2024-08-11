@@ -5,9 +5,10 @@ import { createSlice, configureStore } from "@reduxjs/toolkit";
 
 // Initial State Setup
 const flowInitialState = {
-  isLogin: localStorage.getItem("session") === "active",
+  isLogin: sessionStorage.getItem("session") === "active",
   isUploaded: sessionStorage.getItem("uploaded") === "true",
-  isMock: sessionStorage.getItem("mockenv") === "true"
+  isMock: sessionStorage.getItem("mockenv") === "true",
+  hasError: sessionStorage.getItem("error") === "true"
 };
 
 const chatInitialState = {
@@ -26,9 +27,9 @@ const flowSlice = createSlice({
     handleAuth: (state, action) => {
       state.isLogin = action.payload;
       if (action.payload) {
-        localStorage.setItem("session", "active");
+        sessionStorage.setItem("session", "active");
       } else {
-        localStorage.removeItem("session");
+        sessionStorage.removeItem("session");
       }
     },
     handleUpload: (state, action) => {
@@ -38,6 +39,10 @@ const flowSlice = createSlice({
     handleMock: (state, action) => {
       state.isMock = action.payload;
       sessionStorage.setItem("mockenv", action.payload.toString());
+    },
+    handleError: (state,action)=>{
+      state.hasError = action.payload;
+      sessionStorage.setItem("error", action.payload.toString());
     }
   }
 });
@@ -72,7 +77,7 @@ const store = configureStore({
 });
 
 // Export actions for use in components
-export const { handleAuth, handleUpload, handleMock } = flowSlice.actions;
+export const { handleAuth, handleUpload, handleMock, handleError } = flowSlice.actions;
 export const { push, reset, update } = chatSlice.actions;
 
 // Uncomment below if using redux-persist in the future

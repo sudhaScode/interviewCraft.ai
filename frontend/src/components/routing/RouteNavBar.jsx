@@ -3,7 +3,7 @@ import styles from "../Header.module.css";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { handleAuth, handleUpload, reset, push} from "../../Reduxstore/Store";
+import { handleAuth, handleUpload, reset, push, handleError} from "../../Reduxstore/Store";
 
 
 
@@ -28,6 +28,7 @@ function NavBar(){
             sessionStorage.clear()
             dispatch(handleAuth(false))
             dispatch(handleUpload(false))
+            dispatch(handleError(false))
             // dispatch(reset())
         }
             

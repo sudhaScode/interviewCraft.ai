@@ -29,14 +29,12 @@ const flowSlice = createSlice({
       if (action.payload) {
         sessionStorage.setItem("session", "active");
       } else {
-        sessionStorage.removeItem("session");
+        sessionStorage.clear()//logout ope
       }
     },
     handleUpload: (state, action) => {
       state.isUploaded = action.payload;
       if (action.payload)  sessionStorage.setItem("uploaded", action.payload.toString());
-      else
-      sessionStorage.removeItem("uploaded")
 
     },
     handleMock: (state, action) => {

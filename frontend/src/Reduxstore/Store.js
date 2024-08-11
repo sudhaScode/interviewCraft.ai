@@ -34,7 +34,10 @@ const flowSlice = createSlice({
     },
     handleUpload: (state, action) => {
       state.isUploaded = action.payload;
-      sessionStorage.setItem("uploaded", action.payload.toString());
+      if (action.payload)  sessionStorage.setItem("uploaded", action.payload.toString());
+      else
+      sessionStorage.removeItem("uploaded")
+
     },
     handleMock: (state, action) => {
       state.isMock = action.payload;

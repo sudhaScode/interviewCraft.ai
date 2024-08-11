@@ -22,12 +22,13 @@ function NavBar(){
             navigate("/login")
         }
         else{
-            localStorage.clear("auth")
-            sessionStorage.clear("messages")
-            sessionStorage.clear("uploaded")
+            // sessionStorage.removeItem("messages")
+            // sessionStorage.removeItem("uploaded")
+            // console.log("year")
+            sessionStorage.clear()
             dispatch(handleAuth(false))
             dispatch(handleUpload(false))
-            dispatch(reset())
+            // dispatch(reset())
         }
             
     }

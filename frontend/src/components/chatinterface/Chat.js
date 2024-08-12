@@ -3,6 +3,7 @@ import React, { useRef, useEffect, memo } from "react";
 import { useSelector } from "react-redux";
 import Resume from "../Resume";
 import {Marked} from 'marked';
+import ReactMarkdown from 'react-markdown';
 
 export const botimage = "https://images.unsplash.com/photo-1586374579358-9d19d632b6df?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 export const userimage = "https://images.unsplash.com/photo-1696429175928-793a1cdef1d3?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
@@ -23,7 +24,7 @@ const BotMessage = memo(({ chat, isUploaded, isLogin }) => {
                     {!isUploaded && isLogin && <Resume className={styles["upload-resume"]} />}
                 </div>
             ) : (
-                <div className={styles["container-bot-message"]} dangerouslySetInnerHTML={getMarkdownText(chat.response)} />
+                <div className={styles["container-bot-message"]} >   {/* dangerouslySetInnerHTML={getMarkdownText(chat.response)} /> */}<ReactMarkdown children={chat.response} /></div>
             )}
         </div>
     );

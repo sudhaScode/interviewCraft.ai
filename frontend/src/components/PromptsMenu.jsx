@@ -41,6 +41,7 @@ function PromptsMenu() {
                 <button 
                     className={styles["dropdown-prompts"]} 
                     onMouseOver={() => setShow(true)}
+                    onClick={()=>setShow(prev =>!prev)}
                    
                 >
                     Prompts

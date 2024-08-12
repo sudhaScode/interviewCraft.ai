@@ -30,7 +30,7 @@ function NavBar(){
             dispatch(handleUpload(false))
             dispatch(handleError(false))
             dispatch(reset())
-            // navigate("/prompt")
+            navigate("/login")
             // // dispatch(reset())
         }
             

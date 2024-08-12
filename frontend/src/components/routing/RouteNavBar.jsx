@@ -29,6 +29,7 @@ function NavBar(){
             dispatch(handleAuth(false))
             dispatch(handleUpload(false))
             dispatch(handleError(false))
+            navigate("/prompt")
             // dispatch(reset())
         }
             

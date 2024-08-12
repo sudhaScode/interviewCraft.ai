@@ -59,7 +59,7 @@ const chatSlice = createSlice({
     },
     reset: (state) => {
       state.messages = chatInitialState.messages;
-      sessionStorage.setItem("messages", JSON.stringify(state.messages));
+      // sessionStorage.setItem("messages", JSON.stringify(state.messages));
     },
     update: (state) => {
       const newMessages = state.messages.filter(msg => !msg.componentType);

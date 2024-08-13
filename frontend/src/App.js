@@ -1,6 +1,5 @@
 
 import './App.css';
-import "react-chatbot-kit/build/main.css";
 import { RouterProvider } from 'react-router-dom';
 import {Provider} from "react-redux";
 import store from './Reduxstore/Store';

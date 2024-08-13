@@ -37,7 +37,7 @@ function Resume({ className }) {
         formData.append('file', selectedFile);
 
         try {
-            console.log("here")
+            //console.log("here")
             const response = await fetch(`${URL_ENDPOINT}/load`, {
                 method: "POST",
                 body: formData,
@@ -59,7 +59,7 @@ function Resume({ className }) {
                 throw new Error("Upload failed");
             }
         } catch (error) {
-            console.log(error)
+            //console.log(error)
             dispatch(handleError(true))
             setSelectedFile(null);
             if(fileInputRef.current){

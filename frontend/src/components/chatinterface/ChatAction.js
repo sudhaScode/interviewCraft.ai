@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { push, handleError } from "../../Reduxstore/Store";
 import axios from "axios";
 import { URL_ENDPOINT } from "../../constants/Config";
-import { botimage } from "./Chat";
+import botimage from "../../assets/chatbot.jpg";
 import { mock } from "../../constants/prompts";
 
 function ChatAction({ isMock }) {

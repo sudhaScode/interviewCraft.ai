@@ -5,9 +5,9 @@ import Resume from "../Resume";
 import {Marked} from 'marked';
 import ReactMarkdown from 'react-markdown';
 import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
+import botimage from "../../assets/chatbot.jpg";
+import userimage from "../../assets/user.jpg"
 
-export const botimage = "https://images.unsplash.com/photo-1586374579358-9d19d632b6df?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-export const userimage = "https://images.unsplash.com/photo-1696429175928-793a1cdef1d3?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 // Memoized chat components
 const BotMessage = memo(({ index, chat, isUploaded, isLogin }) => {

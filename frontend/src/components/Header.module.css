@@ -17,7 +17,6 @@
     font-size: 0.8rem;
 }
 .login{
-    margin-right: 3rem;
     background-color: transparent;
     border: none;
     font-size: 1.4rem;
@@ -28,6 +27,28 @@
 .login:hover{
     background-color: rgba(240, 248, 255, 0.596);
     border-radius: 10px;
+}
+.guide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:1.5rem;
+
+}
+.guide-button {
+    
+    border: none;
+    height: fit-content;
+    width: fit-content;
+    background-color: rgb(236, 181, 181);
+    background: transparent;
+}
+.guide-image{
+    margin-top: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: rgb(236, 181, 181);
+    margin-right: 4px;
 }
 
 @media screen and (max-width:767px) {

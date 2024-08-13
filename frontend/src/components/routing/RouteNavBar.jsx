@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 import styles from "../Header.module.css";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { handleAuth, handleUpload, reset, push, handleError, handleReset} from "../../Reduxstore/Store";
+import { handleAuth,reset, handleReset} from "../../Reduxstore/Store";
+import signpost from "../../assets/guider.png"
 
 
 
@@ -44,7 +44,10 @@ function NavBar(){
     return(
         <div className={styles.header}>
             <NavLink to="/prompt" className={styles.logo}> <h1 >interviewCraft.ai</h1></NavLink>
-            <button className={styles.login} onClick={loginHandler}name={!isLogin?"login":"logout"}>{!isLogin?"Login":"Logout"}</button>
+           <div className={styles.guide}>
+           <button className={styles.login} onClick={loginHandler}name={!isLogin?"login":"logout"}>{!isLogin?"Login":"Logout"}</button>
+           {isLogin && <button className={styles["guide-button"]} ><a href="https://github.com/sudhaScode/interviewCraft.ai/blob/snb/GuideMe.md" ><img src={signpost} alt="Guide" className={styles["guide-image"]}/> </a></button>}
+           </div>
       </div>
     );
 }

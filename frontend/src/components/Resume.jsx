@@ -44,9 +44,9 @@ function Resume({ className }) {
                 body: formData,
             });
              console.log(response)
-            if (response.ok) {
+            if (response.status === 200) {
                 dispatch(handleUpload(true));
-                dispatch(update());
+                dispatch(update());//removes component
 
                 const message = {
                     name: "Craft.ai",

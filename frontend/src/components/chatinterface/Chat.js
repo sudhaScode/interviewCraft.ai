@@ -17,9 +17,6 @@ const BotMessage = memo(({ index, chat, isUploaded, isLogin }) => {
     // const {isCopied, setIsCopied} = useState(false)
     
     const copyHandler =async(text, index)=>{
-        //    if (chatRef.current){
-        //     console.log(chatRef.current.markdownText)
-        //    }
            const chatElement = document.getElementById(`chat-content${index}`)
            try{
            await navigator.clipboard.writeText(chatElement.textContent);
@@ -47,15 +44,10 @@ const BotMessage = memo(({ index, chat, isUploaded, isLogin }) => {
             {chat.componentType ? (
                 <div className={isUploaded ? styles["container-bot-message"] : isLogin ? `${styles["container-bot-message"]} ${styles["container-bot-upload"]}` : styles["container-bot-message"]}  id={`chat-content${index}`}>
                     {chat.response}
-                    {!isUploaded && isLogin && <Resume className={styles["upload-resume"]} />}
-                    { chat.response.lengtth > 150 && <> 
-                    <p ref={copyRef} className={styles.copied}></p>
-                    <button className={styles["copy-button"]} onClick={()=>copyHandler(chat.response,index)}><ContentCopyOutlinedIcon sx={{width:"21px", height:"21px"}}/></button>
-                    </> }
                 </div>
             ) : (
                 <div className={styles["container-bot-message"]} id={`chat-content${index}`} >   {/* dangerouslySetInnerHTML={getMarkdownText(chat.response)} /> */}<ReactMarkdown children={chat.response} />
-                 { chat.response.lengtth > 150 && <> 
+                 { chat.response.length >300 && <> 
                     <p ref={copyRef} className={styles.copied}></p>
                     <button className={styles["copy-button"]} onClick={()=>copyHandler(chat.response,index)}><ContentCopyOutlinedIcon sx={{width:"21px", height:"21px"}}/></button>
                     </> }

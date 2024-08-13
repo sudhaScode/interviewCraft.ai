@@ -167,7 +167,7 @@
   }
 }
 .upload-resume{
-  display: none;
+  display: none !important;
 }
 .copy-button{
   position: absolute;
@@ -218,7 +218,7 @@
     z-index: 3;
   }
   .upload-resume{
-    display: block;
+    display: block !important;
   }
 
   

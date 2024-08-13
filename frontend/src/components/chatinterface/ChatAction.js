@@ -118,7 +118,7 @@ function ChatAction({ isMock }) {
 
     return (
         <>
-            {isMock && count >= 1 && 
+            {isMock && count >= 10 && 
                 <button className={styles["feedback-button"]} onClick={feedBackHandler}>
                     Click me! For Feedback
                 </button>

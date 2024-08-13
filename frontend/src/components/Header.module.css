@@ -23,6 +23,7 @@
     font-weight: 800;
     cursor: pointer;
     text-align: center;
+    margin-right: 2rem;
 }
 .login:hover{
     background-color: rgba(240, 248, 255, 0.596);
@@ -32,16 +33,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap:1.5rem;
 
-}
-.guide-button {
-    
-    border: none;
-    height: fit-content;
-    width: fit-content;
-    background-color: rgb(236, 181, 181);
-    background: transparent;
 }
 .guide-image{
     margin-top: 10px;
@@ -49,6 +41,7 @@
     height: 40px;
     background-color: rgb(236, 181, 181);
     margin-right: 4px;
+    margin-right: 1rem;
 }
 
 @media screen and (max-width:767px) {

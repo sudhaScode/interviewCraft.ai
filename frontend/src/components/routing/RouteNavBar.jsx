@@ -46,7 +46,7 @@ function NavBar(){
             <NavLink to="/prompt" className={styles.logo}> <h1 >interviewCraft.ai</h1></NavLink>
            <div className={styles.guide}>
            <button className={styles.login} onClick={loginHandler}name={!isLogin?"login":"logout"}>{!isLogin?"Login":"Logout"}</button>
-           {isLogin && <button className={styles["guide-button"]} ><a href="https://github.com/sudhaScode/interviewCraft.ai/blob/snb/GuideMe.md" ><img src={signpost} alt="Guide" className={styles["guide-image"]}/> </a></button>}
+           {isLogin && <a href="https://github.com/sudhaScode/interviewCraft.ai/blob/snb/GuideMe.md" target="_blank" rel="noreferrer"><img src={signpost} alt="Guide" className={styles["guide-image"]}/> </a>}
            </div>
       </div>
     );

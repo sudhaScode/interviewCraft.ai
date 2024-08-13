@@ -167,7 +167,7 @@
   }
 }
 .upload-resume{
-  display: none !important;
+  display: none ;
 }
 .copy-button{
   position: absolute;
@@ -235,10 +235,13 @@
     border-radius: 0px;
   }
   .container-bot-message {
-    font-size: 15px;
+    font-size: 16px;
   }
   .check-mock{
-    font-size:10px ;
+    font-size:15px ;
+  }
+  .upload-resume{
+    top: 25%;
   }
 
 }

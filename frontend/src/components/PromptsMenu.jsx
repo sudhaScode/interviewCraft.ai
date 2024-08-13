@@ -3,7 +3,7 @@ import styles from "./PromptsMenu.module.css";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { resume, interview, mock } from "../constants/prompts";
 import { useDispatch, useSelector } from "react-redux";
-import { handleError, handleMock, handleUpload, push } from "../Reduxstore/Store";
+import { handleReset, push } from "../Reduxstore/Store";
 
 function PromptsMenu() {
     const [show, setShow] = useState(false);
@@ -17,10 +17,8 @@ function PromptsMenu() {
     };
 
     const resetHandler = () => {
-        dispatch(handleUpload(false));
-        dispatch(handleError(false))
         localStorage.removeItem("fileName");
-        dispatch(handleMock(false));
+        dispatch(handleReset())
         const message = {
             name: "Craft.ai",
             key: "bot-resume-res",

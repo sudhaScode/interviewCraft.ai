@@ -29,11 +29,11 @@ export const interview= [
     ]
 
 export const  mock = [
-      "< To start Interview use blow prompts >",
+      "{ To start Interview use blow prompts }",
       "can be use keywords like mock interview, simulate interview, feedback(for feedback) as short prompts ",
       "Simulate mock interview! [on tech stack/ skill/ role/ job description]",
       "Have a mock interview? Simulate a real interview experience to help me feel more confident.",
-      "Conduct a mock In-Person interview for the [Job Title] position based on the uploaded job description.",
+      "Conduct a mock interview for the [Job Title] position based on the uploaded job description. to check my reatime problem solving",
       "Simulate a mock interview for [Job Title] with a focus on [Specific Skills].",
       "Ask me common interview questions for the [Industry] industry and the [Job Title] role.",
       "Ask me a challenging technical question related to [programming language or technology]",
@@ -41,9 +41,9 @@ export const  mock = [
       "Let's role-play the closing moments of the interview. Help me practice delivering a strong conclusion and asking impactful questions.",
       "Surprise me! Conduct a mock interview for the [Job Title] position using a scenario you generate based on the industry and role.",
       "Provide immediate feedback on my non-verbal communication during this mock interview.",
-      "< If need help in Interview use below prompt >",
+      "{ If need help in Interview use below prompt }",
       "I'm not sure I understand the difference between those two. Could you explain?",
-      "< To Stop  Interview use below prompt >",
+      "{ To Stop  Interview use below prompt } or click the button `Click me! For Feedback` to get feedback",
       "I'd like to get some feedback on how I'm doing so far.",
     ];
 

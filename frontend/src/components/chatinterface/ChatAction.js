@@ -118,14 +118,14 @@ function ChatAction({ isMock }) {
 
     return (
         <>
-            {isMock && count >= 10 && 
+            {isMock && count >= 2 && 
                 <button className={styles["feedback-button"]} onClick={feedBackHandler}>
                     Click me! For Feedback
                 </button>
             }
             {isMock && count === 0 &&
                 <button className={styles["feedback-button"]} onClick={sendPrompt}>
-                  Click me! to Start Interview
+                  Prompt or Click me! to Start Interview
                 </button>
             }
              {/* {isMock && count === -1 &&

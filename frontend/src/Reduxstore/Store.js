@@ -51,6 +51,11 @@ const flowSlice = createSlice({
     handleError: (state,action)=>{
       state.hasError = action.payload;
       sessionStorage.setItem("error", action.payload.toString());
+    },
+    handleReset:(state)=>{
+      state.hasError = false
+      state.isMock = false
+      state.isUploaded = false
     }
   }
 });
@@ -85,7 +90,7 @@ const store = configureStore({
 });
 
 // Export actions for use in components
-export const { handleAuth, handleUpload, handleMock, handleError } = flowSlice.actions;
+export const { handleAuth, handleUpload, handleMock, handleError, handleReset } = flowSlice.actions;
 export const { push, reset, update } = chatSlice.actions;
 
 // Uncomment below if using redux-persist in the future

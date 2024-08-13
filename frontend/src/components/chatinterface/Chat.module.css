@@ -169,6 +169,24 @@
 .upload-resume{
   display: none;
 }
+.copy-button{
+  position: absolute;
+  right:1%;
+  bottom: 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  padding-top: 3px;
+}
+.copied{
+  background: grey;
+  border-radius: 4px;
+  position: absolute;
+  z-index: 3;
+  right: 1%;
+  bottom: 2%;
+  padding: 0;
+}
 
 @media screen and (max-width: 768px) {
   .container{

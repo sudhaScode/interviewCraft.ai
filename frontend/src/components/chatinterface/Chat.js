@@ -1,17 +1,43 @@
 import styles from "./Chat.module.css";
-import React, { useRef, useEffect, memo } from "react";
+import React, { useRef, useEffect, memo, useState } from "react";
 import { useSelector } from "react-redux";
 import Resume from "../Resume";
 import {Marked} from 'marked';
 import ReactMarkdown from 'react-markdown';
+import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
 
 export const botimage = "https://images.unsplash.com/photo-1586374579358-9d19d632b6df?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 export const userimage = "https://images.unsplash.com/photo-1696429175928-793a1cdef1d3?q=80&w=1780&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 // Memoized chat components
-const BotMessage = memo(({ chat, isUploaded, isLogin }) => {
+const BotMessage = memo(({ index, chat, isUploaded, isLogin }) => {
     const getMarkdownText = (markdownText) => ({ __html: new Marked({ gfm: true }).parse(markdownText) });
-
+    const copyRef = useRef(null)
+    const timeRef = useRef(null)
+    // const {isCopied, setIsCopied} = useState(false)
+    
+    const copyHandler =async(text, index)=>{
+        //    if (chatRef.current){
+        //     console.log(chatRef.current.markdownText)
+        //    }
+           const chatElement = document.getElementById(`chat-content${index}`)
+           try{
+           await navigator.clipboard.writeText(chatElement.textContent);
+           if(copyRef.current){
+            copyRef.current.innerText = "Copied"
+           }
+        //    console.log("Text copied")
+           }
+           catch {
+            // console.log("Failed copied")
+            copyRef.current.innerText = "Failed Copied"
+           }
+           timeRef.current = setTimeout(()=>{
+            if(copyRef.current){
+                copyRef.current.innerText = ""
+               }
+           }, 500)
+    }
     return (
         <div className={styles["bot-container"]}>
             <div className={styles.header}>
@@ -19,12 +45,16 @@ const BotMessage = memo(({ chat, isUploaded, isLogin }) => {
                 <span>{chat.name}</span>
             </div>
             {chat.componentType ? (
-                <div className={isUploaded ? styles["container-bot-message"] : isLogin ? `${styles["container-bot-message"]} ${styles["container-bot-upload"]}` : styles["container-bot-message"]}>
+                <div className={isUploaded ? styles["container-bot-message"] : isLogin ? `${styles["container-bot-message"]} ${styles["container-bot-upload"]}` : styles["container-bot-message"]}  id={`chat-content${index}`}>
                     {chat.response}
                     {!isUploaded && isLogin && <Resume className={styles["upload-resume"]} />}
+                    <p ref={copyRef} className={styles.copied}></p>
+                    <button className={styles["copy-button"]} onClick={()=>copyHandler(chat.response,index)}><ContentCopyOutlinedIcon/></button>
                 </div>
             ) : (
-                <div className={styles["container-bot-message"]} >   {/* dangerouslySetInnerHTML={getMarkdownText(chat.response)} /> */}<ReactMarkdown children={chat.response} /></div>
+                <div className={styles["container-bot-message"]} id={`chat-content${index}`} >   {/* dangerouslySetInnerHTML={getMarkdownText(chat.response)} /> */}<ReactMarkdown children={chat.response} />
+                 <p ref={copyRef} className={styles.copied}></p>
+                 <button className={styles["copy-button"]} onClick={()=>copyHandler(chat.response,index)}><ContentCopyOutlinedIcon sx={{width:"21px", height:"21px"}}/></button></div>
             )}
         </div>
     );
@@ -78,7 +108,7 @@ function Chat({ messages }) {
             {messages.map((chat, index) => (
                 <div className={styles.interface} key={`${chat.key}${index}`}>
                     {chat.name === "Craft.ai" ? (
-                        <BotMessage chat={chat} isUploaded={isUploaded} isLogin={isLogin} />
+                        <BotMessage index={index} chat={chat} isUploaded={isUploaded} isLogin={isLogin} />
                     ) : (
                         <UserMessage chat={chat} />
                     )}

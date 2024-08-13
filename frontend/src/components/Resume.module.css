@@ -54,7 +54,7 @@
 }
 .error{
     margin: 0;
-    padding: 10px;
+    padding: 0;
     font-weight: bold;
     color: rgb(107, 0, 0);
     font-size: 13px;

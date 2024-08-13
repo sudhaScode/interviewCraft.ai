@@ -9,6 +9,7 @@ function Resume({ className }) {
     const fileInputRef = useRef(null);
     const [selectedFile, setSelectedFile] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("")
     const dispatch = useDispatch();
     const hasError = useSelector(state=>state.flow.hasError)
     const isUploaded = useSelector(state=>state.flow.isUploaded)
@@ -42,7 +43,7 @@ function Resume({ className }) {
                 method: "POST",
                 body: formData,
             });
-
+             console.log(response)
             if (response.ok) {
                 dispatch(handleUpload(true));
                 dispatch(update());
@@ -56,16 +57,18 @@ function Resume({ className }) {
                 setSelectedFile(null); // Reset file input after successful upload
             } else {
                 
+                if(response.status === 204){
+                    throw new Error("No content in Resume");
+                }
                 throw new Error("Upload failed");
             }
         } catch (error) {
-            //console.log(error)
             dispatch(handleError(true))
             setSelectedFile(null);
+            setErrorMessage(error.message)
             if(fileInputRef.current){
                 fileInputRef.current.value = ""
             }
-            console.error("An error occurred:", error);
         } finally {
             setIsLoading(false);
         }
@@ -118,7 +121,8 @@ function Resume({ className }) {
                 </button>
             </form>
             {isLoading && <p className={styles.selected}>Setting up prompts...</p>}
-            {hasError && !isUploaded && <p className={styles.error}>Upload Failed, Select Resume again</p>}
+            {hasError && !isUploaded && <p className={styles.error}>{errorMessage}</p>}
+            {hasError && !isUploaded && <p className={styles.error}>Please Try with another resume</p>}
         </div>
     );
 }

@@ -11,7 +11,7 @@ function LeftPaneMenu(){
     return(
        <>
        { isLogin && !isUploaded && <Resume />}
-       {!isUploaded && !isLogin && <PromptsMenu/>  }  
+       {isUploaded && <PromptsMenu/>  }  
        </>
     );
 }

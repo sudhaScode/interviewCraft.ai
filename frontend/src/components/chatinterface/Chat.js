@@ -48,13 +48,18 @@ const BotMessage = memo(({ index, chat, isUploaded, isLogin }) => {
                 <div className={isUploaded ? styles["container-bot-message"] : isLogin ? `${styles["container-bot-message"]} ${styles["container-bot-upload"]}` : styles["container-bot-message"]}  id={`chat-content${index}`}>
                     {chat.response}
                     {!isUploaded && isLogin && <Resume className={styles["upload-resume"]} />}
+                    { chat.response.lengtth > 150 && <> 
                     <p ref={copyRef} className={styles.copied}></p>
-                    <button className={styles["copy-button"]} onClick={()=>copyHandler(chat.response,index)}><ContentCopyOutlinedIcon/></button>
+                    <button className={styles["copy-button"]} onClick={()=>copyHandler(chat.response,index)}><ContentCopyOutlinedIcon sx={{width:"21px", height:"21px"}}/></button>
+                    </> }
                 </div>
             ) : (
                 <div className={styles["container-bot-message"]} id={`chat-content${index}`} >   {/* dangerouslySetInnerHTML={getMarkdownText(chat.response)} /> */}<ReactMarkdown children={chat.response} />
-                 <p ref={copyRef} className={styles.copied}></p>
-                 <button className={styles["copy-button"]} onClick={()=>copyHandler(chat.response,index)}><ContentCopyOutlinedIcon sx={{width:"21px", height:"21px"}}/></button></div>
+                 { chat.response.lengtth > 150 && <> 
+                    <p ref={copyRef} className={styles.copied}></p>
+                    <button className={styles["copy-button"]} onClick={()=>copyHandler(chat.response,index)}><ContentCopyOutlinedIcon sx={{width:"21px", height:"21px"}}/></button>
+                    </> }
+                 </div>
             )}
         </div>
     );

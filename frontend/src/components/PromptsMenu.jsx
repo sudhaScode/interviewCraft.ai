@@ -45,11 +45,11 @@ function PromptsMenu() {
                    
                 >
                     Prompts
-                    <KeyboardArrowDownIcon className={styles["drop-icon"]} />
+                    <KeyboardArrowDownIcon className={show ? `${styles["drop-icon"]} ${styles["rotate"]}`:styles["drop-icon"]} />
                 </button>
                 {show && (
                     <div className={styles["prompt-menu"]}>
-                        <ul >
+                        <ul>
                             {!mockenv && (
                                 <> 
                                     <li>

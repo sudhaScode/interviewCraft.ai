@@ -126,7 +126,7 @@ function Resume({ className }) {
             {isLoading && <p className={styles.selected}>Setting up prompts...</p>}
             {hasError && !isUploaded && <p className={styles.error}>{errorMessage}</p>}
             {hasError && !isUploaded && <p className={styles.error}>Please Try with another resume</p>}
-        </div> :<p>False</p>
+        </div> :<p></p>
         }
         </>
     );

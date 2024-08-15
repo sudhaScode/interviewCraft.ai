@@ -29,7 +29,7 @@ function NavBar(){
             dispatch(handleAuth(false))
             dispatch(handleReset())
             dispatch(reset())
-            navigate("/login")
+           // navigate("/login")
             // // dispatch(reset())
         }
             

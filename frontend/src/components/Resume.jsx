@@ -13,6 +13,7 @@ function Resume({ className }) {
     const dispatch = useDispatch();
     const hasError = useSelector(state=>state.flow.hasError)
     const isUploaded = useSelector(state=>state.flow.isUploaded)
+    const isLogin= useSelector(state=>state.flow.isLogin)
     const handleFileClick = (event) => {
         event.stopPropagation();
         fileInputRef.current?.click();
@@ -75,7 +76,9 @@ function Resume({ className }) {
     };
 
     return (
-        <div className={`${styles["form-container"]} ${className}`}>
+        <>
+        { (isLogin && !isUploaded)?
+            <div className={`${styles["form-container"]} ${className}`}>
             <form onSubmit={handleFileUpload}>
                 <input
                     type="file"
@@ -123,7 +126,9 @@ function Resume({ className }) {
             {isLoading && <p className={styles.selected}>Setting up prompts...</p>}
             {hasError && !isUploaded && <p className={styles.error}>{errorMessage}</p>}
             {hasError && !isUploaded && <p className={styles.error}>Please Try with another resume</p>}
-        </div>
+        </div> :<p>False</p>
+        }
+        </>
     );
 }
 

@@ -56,6 +56,9 @@ const flowSlice = createSlice({
       state.hasError = false
       state.isMock = false
       state.isUploaded = false
+      sessionStorage.setItem("error", false);
+      sessionStorage.setItem("uploaded", false);
+      sessionStorage.setItem("mockenv", false);
     }
   }
 });

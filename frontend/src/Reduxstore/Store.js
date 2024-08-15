@@ -36,7 +36,7 @@ const flowSlice = createSlice({
       if (action.payload) {
         sessionStorage.setItem("session", "active");
       } else {
-        sessionStorage.clear()//logout ope
+        sessionStorage.removeItem("session")//logout ope
       }
     },
     handleUpload: (state, action) => {

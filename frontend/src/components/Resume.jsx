@@ -40,7 +40,7 @@ function Resume({ className }) {
 
         try {
             //console.log("here")
-            const response = await fetch(`${URL_ENDPOINT}/load`, {
+            const response = await fetch(`${URL_ENDPOINT}/api/load`, {
                 method: "POST",
                 body: formData,
             });
@@ -56,12 +56,17 @@ function Resume({ className }) {
                 };
                 dispatch(push(message));
                 setSelectedFile(null); // Reset file input after successful upload
+                let resume = sessionStorage.getItem("fileName");
+                if(resume){
+                 resume = resume.substring(0, resume.length/2).trim()
+                    sessionStorage.setItem("resume_id", `${resume}${Math.floor(Math.random()*99)+99}`)
+                }
+                
             } else {
                 
                 if(response.status === 204){
                     throw new Error("No content in Resume");
                 }
-                throw new Error("Upload failed");
             }
         } catch (error) {
             dispatch(handleError(true))

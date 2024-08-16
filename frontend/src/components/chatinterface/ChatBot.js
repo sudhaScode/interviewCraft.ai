@@ -28,38 +28,18 @@ function ChatBot(){
         
         if(!isMock){
             dispatch(handleMock(true))
-            mockAPI()
+            // mockAPI()
+            let resume = sessionStorage.getItem("fileName");
+            if(resume){
+             resume = resume.substring(0, resume.length/2).trim()
+                sessionStorage.setItem("mock_id", `${resume}${Math.floor(Math.random()*99)+199}`)
+            }
        }
        else{
         dispatch(handleMock(false))
        }
     }
 
-    const mockAPI =useCallback(async()=>{
-        let URL = `${URL_ENDPOINT}/mock`
-        const fileName = sessionStorage.getItem("fileName")
-        let body = {
-            answer: "It is just for your reference to keep resume candidate. don't ask question go through resume once",
-            file_name: fileName,
-            qnsno: -1
-        }
-        try{
-            const response = await axios.post(URL, body );
-            //console.log(response)
-            if(response.status === 200){
-                const data=  await response.data;
-                return data;
-            }
-            else{
-                mockAPI()
-            }
-        }
-        catch(error){
-            throw error
-        }
-    },[])
-
-     
    useEffect(()=>{
         const areMessages = sessionStorage.getItem("messages")
         

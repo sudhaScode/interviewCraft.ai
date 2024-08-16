@@ -17,14 +17,17 @@ function ChatAction({ isMock }) {
 
     const promptRef = useRef(null);
     const dispatch = useDispatch();
+    const fileName = sessionStorage.getItem("fileName");
+    const mock_id = sessionStorage.getItem("mock_id");
+    const resume_id = sessionStorage.getItem("resume_id");
+
 
     const fetchAPI = useCallback(async (prompt) => {
-        const fileName = sessionStorage.getItem("fileName");
         // console.log("coutn:: ", count, prompt)
-        const URL = isMock ? `${URL_ENDPOINT}/mock` : `${URL_ENDPOINT}/prompt`;
+        const URL = isMock ? `${URL_ENDPOINT}/api/mock/${count}` : `${URL_ENDPOINT}/api/prompt/${storedMessages.length-2}`;
         const body = isMock 
-            ? { answer: prompt, file_name: fileName, qnsno: count } 
-            : { prompt, file_name: fileName };
+            ? { input: prompt, file_name: fileName, mock_id: mock_id } 
+            : { prompt, file_name: fileName, resume_id:resume_id };
 
         if (isMock) setCount(prev => prev + 1);
 
@@ -74,23 +77,16 @@ function ChatAction({ isMock }) {
     const feedBackHandler = useCallback(async () => {
         dispatch(handleError(false))
         const fileName = sessionStorage.getItem("fileName");
+        const id = sessionStorage.getItem("mock_id");
         try {
-            const response = await axios.post(`${URL_ENDPOINT}/mock`, { answer: `Stop interview. Please provide the Feedback for my performance. \n${storedMessages.length}`, file_name: fileName, qnsno: 1000 });
+            const response = await axios.post(`${URL_ENDPOINT}/api/mock/1000`, { input: `Stop interview. Please provide the Feedback for my performance. \n${storedMessages.length}`, file_name: fileName, mock_id: id});
             if (response.status === 200) {
                 dispatch(push({ name: "Craft.ai", key: "bot-init-res", response: response.data.response }));
-            }
-            else{
-                dispatch(handleError(true))
-            }
-            const responseMock = await axios.post(`${URL_ENDPOINT}/mock`, { answer: `It is just for your reference to keep resume candidate. don't ask question go through resume once \n${storedMessages.length}`, file_name: fileName, qnsno: -1 });
-            if (responseMock.status === 200) {
                 setCount(0)
             }
             else{
                 dispatch(handleError(true))
             }
-            
-
         } catch {
             // setError("Failed to send feedback. Please try again.");
             dispatch(handleError(true))

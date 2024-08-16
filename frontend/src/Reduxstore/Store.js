@@ -8,7 +8,7 @@ const flowInitialState = {
   isLogin: sessionStorage.getItem("session") === "active",
   isUploaded: sessionStorage.getItem("uploaded") === "true",
   isMock: sessionStorage.getItem("mockenv") === "true",
-  hasError: sessionStorage.getItem("error") === "true"
+  hasError: sessionStorage.getItem("error") === "true",
 };
 
 const chatInitialStatePersisted = {

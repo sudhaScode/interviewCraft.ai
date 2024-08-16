@@ -1,19 +1,20 @@
 export const resume = [
         "can be use keywords like resume enhance, resume improve - short prompts",
         "Enhance my resume? Make it stand out to potential employers.",
+        "Please provide me with your best career advice and guidance tailored to my profession.",
         "Analyze my resume for [Job Title] and suggest improvements to make it a better fit.",
         "I'm applying for a [Job Title]. Can you review my resume and suggest ways to highlight the skills they're looking for?",
         "Unsure if my resume aligns with the [Job Title] position. Can you analyze it and suggest how to tailor it effectively?",
         "Help me optimize my resume for [Job Title]! I'd like to showcase my skills and experience more effectively.",
         "I uploaded my resume for the [Job Title] position. Could you identify areas where I can strengthen my application?",
-        "Looking for feedback on my resume for a [Job Title] role. Can you analyze it for keyword optimization and clarity?",
+        "Provide feedback on my resume for a [Job Title] role. Can you analyze it for keyword optimization and clarity?",
         "Feeling stuck with my resume for [Job Title]. Any suggestions to make it stand out from the competition?",
         "I'm targeting [Industry].  Review my resume for a [Job Title] position and suggest industry-specific improvements.",
         "Can you help me tailor my resume for a [Job Title] role? I have experience in [Previous Role] but want to emphasize relevant skills.",
         "Uploaded my resume for a [Job Title] position. Would appreciate suggestions on formatting, action verbs, and overall impact."
       ];
 export const interview= [
-        "can be use keyword interview preparation - short prompts",
+        "can be use keyword prepare me for interview - short prompts",
         "Prepare a list of interview questions on [skill/techstack]? Provide practice questions and tip.",
         "Generate potential technical interview questions for a [job title] role.",
         "Help me craft strong answers for a [Job Title] interview based on my skills and the job description." ,

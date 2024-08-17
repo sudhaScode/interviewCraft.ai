@@ -40,7 +40,7 @@ function Resume({ className }) {
 
         try {
             //console.log("here")
-            const response = await fetch(`${URL_ENDPOINT}/load`, {
+            const response = await fetch(`${URL_ENDPOINT}/api/load`, {
                 method: "POST",
                 body: formData,
             });

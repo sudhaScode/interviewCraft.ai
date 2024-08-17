@@ -53,20 +53,20 @@ function ChatAction({ isMock }) {
 
         dispatch(push({ name: "User", key: `user-resume-mes${storedMessages.length}`, response: [request] }));
 
-        // try {
-        //     const data = await fetchAPI(request);
+        try {
+            const data = await fetchAPI(request);
 
-        //     dispatch(push({ name: "Craft.ai", key: `bot-init-res${storedMessages.length}`, response: data.response }));
-        //     if (promptRef.current) promptRef.current.value = "";
-        //     setPrompt([]);
-        // } catch {
-        //     // Error handling done in fetchAPI
-        //     // setError("Service failed, Please try again")
-        //     dispatch(handleError(true))
-        // } finally {
-        //     setIsPrompting(false);
+            dispatch(push({ name: "Craft.ai", key: `bot-init-res${storedMessages.length}`, response: data.response }));
+            if (promptRef.current) promptRef.current.value = "";
+            setPrompt([]);
+        } catch {
+            // Error handling done in fetchAPI
+            // setError("Service failed, Please try again")
+            dispatch(handleError(true))
+        } finally {
+            setIsPrompting(false);
 
-        // }
+        }
     }, [fetchAPI, dispatch, storedMessages.length]);
 
     const handleInputChange = useCallback((event) => {

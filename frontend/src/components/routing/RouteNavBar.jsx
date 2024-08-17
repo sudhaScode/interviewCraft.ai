@@ -52,7 +52,7 @@ function NavBar(){
 
     useEffect(()=>{
        
-      if(isUploaded){
+      if(isUploaded  && isLogin){
         const chatHanlder=(event)=>{
             loginHandler()
              // You can set a custom message here, but most browsers will not display it

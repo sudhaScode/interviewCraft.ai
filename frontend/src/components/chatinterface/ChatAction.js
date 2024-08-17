@@ -39,7 +39,7 @@ function ChatAction({ isMock }) {
             // setError("An error occurred while processing your request. Please try again.");
             // dispatch(handleError(true))
         }
-    }, [isMock, count]);
+    }, [isMock, count, storedMessages]);
 
     const onPromptHandler = useCallback(async (event) => {
         let request = event.target.prompt.value;
@@ -70,7 +70,6 @@ function ChatAction({ isMock }) {
     }, [fetchAPI, dispatch, storedMessages.length]);
 
     const handleInputChange = useCallback((event) => {
-        dispatch(handleError(false))
         setPrompt(event.target.value.split('\n'));
     }, [dispatch]);
 

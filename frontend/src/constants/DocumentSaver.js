@@ -49,10 +49,10 @@ export const saveDoc = async()=>{
     }
 
     const doc = new jsPDF();
-    const maxWidth = 200; 
+    const maxWidth = 180; 
     const lines = doc.splitTextToSize(data, maxWidth);
     lines.forEach((line, index) => {
-        doc.text(line, 10, 10 + (index * 10)); // Adjust vertical spacing as needed
+        doc.text(line, 10, 5 + (index * 5)); // Adjust vertical spacing as needed
     });
     let fileName = sessionStorage.getItem("fileName")
     console.log("fileName debug",fileName)

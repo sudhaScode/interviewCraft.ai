@@ -17,13 +17,13 @@ function ChatAction({ isMock }) {
 
     const promptRef = useRef(null);
     const dispatch = useDispatch();
-    const fileName = sessionStorage.getItem("fileName");
-    const mock_id = sessionStorage.getItem("mock_id");
-    const resume_id = sessionStorage.getItem("resume_id");
 
 
     const fetchAPI = useCallback(async (prompt) => {
         // console.log("coutn:: ", count, prompt)
+        const fileName = sessionStorage.getItem("fileName");
+        const mock_id = sessionStorage.getItem("mock_id");
+        const resume_id = sessionStorage.getItem("resume_id");
         const URL = isMock ? `${URL_ENDPOINT}/api/mock/${count}` : `${URL_ENDPOINT}/api/prompt/${storedMessages.length-2}`;
         const body = isMock 
             ? { input: prompt, file_name: fileName, mock_id: mock_id } 

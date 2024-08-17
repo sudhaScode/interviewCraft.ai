@@ -43,6 +43,11 @@
     margin-right: 4px;
     margin-right: 1rem;
 }
+.modal-chat-download{
+width: fit-content !important;
+height: fit-content;
+margin: 20px;
+}
 
 @media screen and (max-width:767px) {
     .header{
@@ -58,6 +63,9 @@
     }  
 }
 
+.modal-chat-down{
+    
+}
 @media screen and (max-width:500px) {
     .header{
        height: 7vh;

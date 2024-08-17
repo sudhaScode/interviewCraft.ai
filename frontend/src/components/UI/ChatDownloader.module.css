@@ -1,0 +1,30 @@
+.download-modal{
+    display: flex;
+    flex-direction: column;
+}
+.download-button{
+     height: fit-content;
+     border-radius: 8px;
+     border: 2px solid rgb(204, 188, 188);
+     padding: 5px 10px;
+     font-size: 1rem;
+     margin-top: 1rem;
+     font-weight: 800;
+     cursor: pointer;
+}
+.download-button:hover{
+    background-color: rgb(218, 159, 159);
+}
+.modal-actions{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.modal-actions p{
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: dashed;
+    margin-top: 1.6rem;
+    text-transform: uppercase;
+    color:rgb(240, 41, 41);
+}

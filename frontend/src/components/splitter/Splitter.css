@@ -13,8 +13,8 @@
 /* Left Pane styles */
 .left-pane {
     background-color: rgb(226, 201, 201);
-    min-width: 23vw;
-    max-width: 38vw;
+    min-width: 25vw;
+    max-width: 35vw;    
     /* Ensures pane height adapts to content */
     position: relative;
 }
@@ -44,7 +44,7 @@
 
 /* Right Pane styles */
 .right-pane {
-    min-width: 72vw;
+    min-width: 65vw;
     height: 100%;
 }
 

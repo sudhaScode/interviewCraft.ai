@@ -85,29 +85,36 @@ function PromptsMenu() {
 
             {!mockenv && activePrompt === "resume" && (
                 <div className={styles["prompts-list"]}>
-                    <p className={styles.predefined}>Prompts for Resume Enhancement</p>
                     <div className={styles["prompts-container"]}>
-                        {resume.map((prompt, index) => (<p key={index}>{prompt}</p>))}
+                        {resume.map((prompts, index) => <div key={index}>
+                         <h2 className={styles.predefined}>{prompts.type}</h2>
+                         {prompts.prompts.map((prompt,index)=><p key={index}>{prompt}</p>)}
+                        </div>)}
                     </div>
                 </div>
             )}
             {!mockenv && activePrompt === "interview" && (
-                <div>
-                    <p className={styles.predefined}>Prompts for Interview Preparation</p>
-                    <div className={styles["prompts-container"]}>
-                        {interview.map((prompt, index) => (<p key={index}>{prompt}</p>))}
-                    </div>
-                </div>
+                 <div className={styles["prompts-list"]}>
+                 <div className={styles["prompts-container"]}>
+                     {interview.map((prompts, index) => <div key={index}>
+                      <h2 className={styles.predefined}>{prompts.type}</h2>
+                      {prompts.prompts.map((prompt,index)=><p key={index}>{prompt}</p>)}
+                     </div>)}
+                 </div>
+             </div>
             )}
             {mockenv && activePrompt === "mock" && (
-                <div>
+                <div className={styles["prompts-list"]}>
                     <p className={styles.predefined}>
                         <label htmlFor="mock" style={{ cursor: "pointer" }}>
                             Make sure to check Mock Interview for better results.
                         </label>
                     </p>
                     <div className={styles["prompts-container"]}>
-                        {mock.map((prompt, index) => (<p key={index}>{prompt}</p>))}
+                    {resume.map((prompts, index) => <div key={index}>
+                      <h2 className={styles.predefined}>{prompts.type}</h2>
+                      {prompts.prompts.map((prompt,index)=><p key={index}>{prompt}</p>)}
+                     </div>)}
                     </div>
                 </div>
             )}

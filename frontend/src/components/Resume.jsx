@@ -44,7 +44,6 @@ function Resume({ className }) {
                 method: "POST",
                 body: formData,
             });
-             console.log(response)
             if (response.status === 200) {
                 dispatch(handleUpload(true));
                 dispatch(update());//removes component

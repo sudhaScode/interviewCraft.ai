@@ -78,12 +78,13 @@
 .predefined{
     justify-content: flex-start;
     font-weight: bolder;
-    text-align: left;
     margin-bottom: 0;
     margin-left: 30px;
-    color: rgba(46, 46, 46, 0.797);
+    color: rgba(46, 46, 46, 0.973);
     font-family: monospace;
-    font-size: large;
+    font-size: 1.2rem;
+    margin-left: 0;
+    color: rgb(0, 0, 0);
 }
 .prompts-container{
     height: 74vh;
@@ -125,7 +126,7 @@
 }
 .prompts-container::-webkit-scrollbar-button {
     background-color: rgba(172, 117, 117, 0.61); /* Adjust opacity as needed */
-    height: 2px;
+    height: 0px;
   }
 
 .reset{

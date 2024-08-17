@@ -4,15 +4,12 @@ import ChatAction from "./ChatAction";
 import styles from "./Chat.module.css";
 import { useSelector, useDispatch } from 'react-redux'; 
 import { push, handleMock } from '../../Reduxstore/Store';
-import { URL_ENDPOINT } from '../../constants/Config';
-import axios from 'axios';
-
+import { useSnackbar } from 'notistack';
 
 function ChatBot(){
     //console.log("messages:: ", messages)
-
+    const { enqueueSnackbar } = useSnackbar()
     const dispatch = useDispatch();
-
     let storedMessages = useSelector(state=>state.chat.messages)
     const areMessages = sessionStorage.getItem("messages")
     const [messages, setMessages]  = useState(JSON.parse(areMessages) || storedMessages)
@@ -34,6 +31,8 @@ function ChatBot(){
              resume = resume.substring(0, resume.length/2).trim()
                 sessionStorage.setItem("mock_id", `${resume}${Math.floor(Math.random()*99)+199}`)
             }
+          
+            enqueueSnackbar("Mock environment set up is successfull. Send a Mock prompt to start Interview",{variant:'success', autoHideDuration:4000})
        }
        else{
         dispatch(handleMock(false))
@@ -66,15 +65,13 @@ function ChatBot(){
 
     return(
         <div className={styles.container}>
-           { isUploaded  && <div className={styles["check-mock"]}>
-                <input type="checkbox" id="mock" checked={isMock} onChange={mockHandler}/>
+           { !isUploaded  && <div className={styles["check-mock"]}>
+                <input type="checkbox" id="mock" checked={isMock} onChange={mockHandler} disabled={!isUploaded}/>
                 <label htmlFor="mock"><span className={styles["mock-env"]} >Remember!</span> To Switch ON/OFF for Mock Interview Simulation </label>
            </div>}
             <Chat messages={messages}/>  
-           {<ChatAction  pushChat={pushChat} isMock = {isMock}/>  }
+           {<ChatAction  pushChat={pushChat} />  }
         </div> 
-
-
     );
 }
 export default ChatBot;

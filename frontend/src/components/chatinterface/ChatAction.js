@@ -51,22 +51,22 @@ function ChatAction({ isMock }) {
         // setError(null);
         dispatch(handleError(false))
 
-            dispatch(push({ name: "User", key: `user-resume-mes${storedMessages.length}`, response: [request] }));
+        dispatch(push({ name: "User", key: `user-resume-mes${storedMessages.length}`, response: [request] }));
 
-        try {
-            const data = await fetchAPI(request);
+        // try {
+        //     const data = await fetchAPI(request);
 
-                dispatch(push({ name: "Craft.ai", key: `bot-init-res${storedMessages.length}`, response: data.response }));
-            if (promptRef.current) promptRef.current.value = "";
-            setPrompt([]);
-        } catch {
-            // Error handling done in fetchAPI
-            // setError("Service failed, Please try again")
-            dispatch(handleError(true))
-        } finally {
-            setIsPrompting(false);
+        //     dispatch(push({ name: "Craft.ai", key: `bot-init-res${storedMessages.length}`, response: data.response }));
+        //     if (promptRef.current) promptRef.current.value = "";
+        //     setPrompt([]);
+        // } catch {
+        //     // Error handling done in fetchAPI
+        //     // setError("Service failed, Please try again")
+        //     dispatch(handleError(true))
+        // } finally {
+        //     setIsPrompting(false);
 
-        }
+        // }
     }, [fetchAPI, dispatch, storedMessages.length]);
 
     const handleInputChange = useCallback((event) => {
@@ -146,9 +146,9 @@ function ChatAction({ isMock }) {
                             name="prompt"
                             onChange={handleInputChange}
                         />
-                        <button type="submit" className={styles["send-button"]} disabled={isPrompting}>
+                       { <button type="submit" className={styles["send-button"]} disabled={isPrompting}>
                             <img src="https://cdn-icons-png.freepik.com/512/10109/10109981.png" alt="SEND" className={styles["send-icon"]} />
-                        </button>
+                        </button>}
                     </form>
                 ) : (
                     <input

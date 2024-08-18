@@ -109,6 +109,9 @@
     padding: 1rem 1.5rem;
     line-height: 1.4;
     word-spacing: 1.9; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }  
   strong{
     line-height: 1.3;
@@ -247,12 +250,13 @@
   }
   .check-mock{
     font-size:10px ;
+    text-align: left;
   }
   .upload-resume{
     top: 25%;
   }
   .check-mock label{
-    margin-left: 0px;
+    margin-left: 10px;
   }
 
 }

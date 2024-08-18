@@ -29,7 +29,7 @@
     text-transform: uppercase;
     color:rgb(240, 41, 41);
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 1300px) {
     .download-button{
        margin-left: 8px;
        font-size: 10px;

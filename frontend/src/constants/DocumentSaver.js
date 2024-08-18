@@ -94,7 +94,7 @@ export const saveDoc = async () => {
     const hours = pad(date.getHours());
 
     const dateFormat = `${day}${month}${year}${hours}`;
-    let chat_name = `${fileName}${dateFormat}`;
+    let chat_name = `Chat history${fileName}${dateFormat}`;
     doc.save(chat_name);
 
     const pdfBlob = doc.output('blob');

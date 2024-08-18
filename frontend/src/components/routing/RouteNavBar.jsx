@@ -16,6 +16,7 @@ import ChatDownloader from "../UI/ChatDownloader"
 function NavBar(){
     const isLogin = useSelector(state=>state.flow.isLogin)
     const isUploaded = useSelector(state=>state.flow.isUploaded)
+    const messages = useSelector(state=>state.chat.messages)
     const [modalState , setModalState] = useState(false)
     const dispatch = useDispatch()
 //    console.log(isUploaded, "upload state")
@@ -54,7 +55,7 @@ function NavBar(){
        
       if(isUploaded  && isLogin){
         const chatHanlder=(event)=>{
-            loginHandler()
+            // loginHandler()
              // You can set a custom message here, but most browsers will not display it
              const message = 'You have unsaved changes. Please click on logout to leave';
              event.returnValue = message; // Standard for modern browsers
@@ -72,10 +73,11 @@ function NavBar(){
         <div className={styles.header}>
             <NavLink to="/prompt" className={styles.logo}> <h1 >interviewCraft.ai</h1></NavLink>
            <div className={styles.guide}>
-           <button className={styles.login} onClick={loginHandler}name={!isLogin?"login":"logout"} id ="auth-button" ref={authRef }>{!isLogin?"Login":"Logout"}</button>
+            {isUploaded && messages.length>2 && <ChatDownloader/>}
+           {/*<button className={styles.login} onClick={loginHandler}name={!isLogin?"login":"logout"} id ="auth-button" ref={authRef }>{!isLogin?"Login":"Logout"}</button>*/}
            { <a href="https://github.com/sudhaScode/interviewCraft.ai/blob/snb/GuideMe.md" target="_blank" rel="noreferrer"><img src={signpost} alt="Guide" className={styles["guide-image"]}/> </a>}
            </div>
-           {modalState && <Modal className={styles["modal-chat-download"]} onClose={()=>setModalState(false)}><ChatDownloader closeHandler={onCloseHandler}/></Modal>}
+           {/*modalState && <Modal className={styles["modal-chat-download"]} onClose={()=>setModalState(false)}><ChatDownloader closeHandler={onCloseHandler}/></Modal>*/}
       </div>
     );
 }

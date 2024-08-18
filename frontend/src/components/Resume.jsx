@@ -81,7 +81,7 @@ function Resume({ className }) {
 
     return (
         <>
-        { (isLogin && !isUploaded)?
+        { !isUploaded?
             <div className={`${styles["form-container"]} ${className}`}>
             <form onSubmit={handleFileUpload}>
                 <input

@@ -2,7 +2,7 @@ export const resume = [
          {
           type: "For Enahncing a Resume",
           prompts:[
-          "Enhace my resume.",
+          "Enhace my resume [Along with your Resume information  for better results]",
           "Can you provide feedback on my resume and key points to improve it?",
           " How can I enhance my resume to better showcase my qualifications and attract potential employers?",
           "Can you suggest specific ways to improve my resume's impact and make it more compelling to hiring managers and send me improved resume?",

@@ -226,7 +226,7 @@
     display: block !important;
   }
   .check-mock input{
-    margin-top: 0px;  
+    margin-top: 0px !important;  
     margin-left: 10px;
   }
   
@@ -247,17 +247,12 @@
   }
   .check-mock{
     font-size:10px ;
-    justify-content: center;
   }
   .upload-resume{
     top: 25%;
   }
-  .check-mock input{
-    margin-top: 5px;  
-    margin-left: 5px;
-  }
   .check-mock label{
-    margin-left: 5;
+    margin-left: 0px;
   }
 
 }

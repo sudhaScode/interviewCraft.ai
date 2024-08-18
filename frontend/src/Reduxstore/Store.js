@@ -15,14 +15,14 @@ const chatInitialStatePersisted = {
   messages: JSON.parse(sessionStorage.getItem("messages")) || [{
     name: "Craft.ai",
     key: "bot-init-res",
-    response: "Welcome to GenAI! Your one-stop shop for landing your dream job.\nPlease login to my application."
+    response: "Welcome to GenAI! Your one-stop shop for landing your dream job.\nPlease upload your resume."
   }]
 };
 const chatInitialState= {
   messages: [{
     name: "Craft.ai",
     key: "bot-init-res",
-    response: "Welcome to GenAI! Your one-stop shop for landing your dream job.\nPlease login to my application."
+    response: "Welcome to GenAI! Your one-stop shop for landing your dream job.\nPlease upload your resume."
   }]
 };
 

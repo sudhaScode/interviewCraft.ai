@@ -66,7 +66,7 @@ function NavBar(){
          window.removeEventListener("beforeunload", chatHanlder, true)
      }
       }
-    },[isLogin, loginHandler])
+    },[isLogin, loginHandler, isUploaded])
 
     return(
         <div className={styles.header}>

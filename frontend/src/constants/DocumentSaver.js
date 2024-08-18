@@ -60,7 +60,7 @@ export const saveDoc = async () => {
         });
     }
 
-    if (!data) {
+    if (data === "") {
         console.log("No data to save.");
         return false;
     }

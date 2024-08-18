@@ -11,7 +11,6 @@ const downloadHandlder =()=>{
   if(check){
     enqueueSnackbar("Chat Downloaded", {variant:"success", autoHideDuration:2000})
     closeHandler()
-
     return
   }
   enqueueSnackbar("Try again \n Chat download failed!", {variant:"error", autoHideDuration:2000})

@@ -42,7 +42,7 @@ const BotMessage = memo(({ index, chat, isUploaded, isLogin }) => {
                 <span>{chat.name}</span>
             </div>
             {chat.componentType ? (
-                <div className={isUploaded ? styles["container-bot-message"] : isLogin ? `${styles["container-bot-message"]} ${styles["container-bot-upload"]}` : styles["container-bot-message"]}  id={`chat-content${index}`}>
+                <div className={isUploaded ? styles["container-bot-message"] : (!isLogin) ? `${styles["container-bot-message"]} ${styles["container-bot-upload"]}` : styles["container-bot-message"]}  id={`chat-content${index}`}>
                     {chat.response}
                     <Resume className={styles["upload-resume"]}/>
                 </div>

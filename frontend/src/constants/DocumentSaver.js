@@ -24,6 +24,7 @@ const fetchAPI =async(file)=>{
 
   function cleanAndFormatText(text) {
     // Remove HTML tags
+    //console.log(text)
     text = text.replace(/<\/?[^>]+(>|$)/g, "");
     
     // Replace markdown syntax with plain text equivalents
@@ -46,13 +47,12 @@ export const saveDoc = async () => {
         conversation_data = JSON.parse(conversation_data);
         conversation_data.forEach((chat, index) => {
             if (index >= 2) {
-                let cleanedResponse = cleanAndFormatText(chat.response);
                 if (chat.name === "Craft.ai") {
-                    data = `${data}\nAIMESSAGE: ${cleanedResponse}`;
+                    data = `${data}\nAIMESSAGE: ${cleanAndFormatText(chat.response)}`;
                 } else {
                     let prompt = "";
                     chat.response.forEach(msg => {
-                        prompt = `${prompt} ${cleanAndFormatText(msg)}`;
+                        prompt = `${prompt} ${msg}`;
                     });
                     data = `${data}\nUSERMESSAGE: ${prompt}`;
                 }

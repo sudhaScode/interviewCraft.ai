@@ -12,7 +12,7 @@ function PromptsMenu() {
     const mockenv = useSelector(state => state.flow.isMock);
 
     const handleOptionClick = (promptType) => {
-        // setShow(false)
+        setShow(false)
         setActivePrompt(activePrompt === promptType ? "" : promptType);
     };
 
@@ -118,9 +118,9 @@ function PromptsMenu() {
                     </div>
                 </div>
             )}
-            <button className={styles.reset} onClick={resetHandler}>
+            {/* <button className={styles.reset} onClick={resetHandler}>
                 Reset
-            </button>
+            </button> */}
         </div>
     );
 }

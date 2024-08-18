@@ -2,10 +2,11 @@ export const resume = [
          {
           type: "For Enahncing a Resume",
           prompts:[
-          "How can I enhance my resume to better showcase my qualifications and attract potential employers?",
-          "Can you suggest specific ways to improve my resume's impact and make it more compelling to hiring managers?",
+          "Can you provide feedback on my resume and key points to improve it?",
+          "Enhace my resume. How can I enhance my resume to better showcase my qualifications and attract potential employers?",
+          "Can you suggest specific ways to improve my resume's impact and make it more compelling to hiring managers and send me improved resume?",
           "What are some strategies to strengthen my resume and ensure it effectively highlights my skills and accomplishments?",
-          "How can I make my resume stand out in a competitive job market?",]
+          "How can I make my resume stand out in a competitive job market? and Enahnce reusme with addressing competitive job market.",]
          },
 
          {

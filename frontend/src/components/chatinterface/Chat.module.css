@@ -129,6 +129,9 @@
    font-size: 14px;
    color: rgba(255, 255, 255, 0.833);
    z-index: 3;
+   display: flex;
+   align-items: center;
+   justify-content: center;
 
   }
   .check-mock input{
@@ -219,10 +222,14 @@
     color: rgba(255, 255, 255, 0.833);
     z-index: 3;
   }
+
   .upload-resume{
     display: block !important;
   }
-
+  .check-mock input{
+    margin-top: 0px;  
+    margin-left: 10px;
+  }
   
 }
 
@@ -241,7 +248,7 @@
   }
   .check-mock{
     font-size:10px ;
-    align-items: flex-start;
+    justify-content: center;
   }
   .upload-resume{
     top: 25%;

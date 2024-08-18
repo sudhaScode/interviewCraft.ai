@@ -5,7 +5,6 @@ import { push, handleError } from "../../Reduxstore/Store";
 import axios from "axios";
 import { URL_ENDPOINT } from "../../constants/Config";
 import botimage from "../../assets/chatbot.jpg";
-import { mock } from "../../constants/prompts";
 
 function ChatAction({isMock}) {
     const isUploaded = useSelector(state => state.flow.isUploaded);
@@ -94,8 +93,8 @@ function ChatAction({isMock}) {
     }, [dispatch, storedMessages.length]);
 
     const sendPrompt = useCallback(() => {
-        onPromptHandler({ target: { prompt: { value: mock[3] } } });
-        if (promptRef.current) promptRef.current.value = mock[3];
+        onPromptHandler({ target: { prompt: { value: "Have a mock interview? Simulate a real interview experience to help me feel more confident." } } });
+        if (promptRef.current) promptRef.current.value = "Have a mock interview? Simulate a real interview experience to help me feel more confident.";
         // setCount(prev=>prev+1) updating in fecth api
     }, [onPromptHandler]);
 

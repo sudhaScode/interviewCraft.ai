@@ -94,7 +94,7 @@ function ChatAction({isMock}) {
 
     const sendPrompt = useCallback(() => {
         onPromptHandler({ target: { prompt: { value: "Have a mock interview? Simulate a real interview experience to help me feel more confident." } } });
-        if (promptRef.current) promptRef.current.value = "Have a mock interview? Simulate a real interview experience to help me feel more confident.";
+        //if (promptRef.current) promptRef.current.value = "Have a mock interview? Simulate a real interview experience to help me feel more confident.";
         // setCount(prev=>prev+1) updating in fecth api
     }, [onPromptHandler]);
 

@@ -70,7 +70,7 @@ function ChatBot(){
                 <label htmlFor="mock"><span className={styles["mock-env"]} >Remember!</span> To Switch ON/OFF for Mock Interview Simulation </label>
            </div>}
             <Chat messages={messages}/>  
-           {<ChatAction  pushChat={pushChat} />  }
+           {<ChatAction  isMock={isMock} />  }
         </div> 
     );
 }

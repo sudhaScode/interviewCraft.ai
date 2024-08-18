@@ -246,5 +246,12 @@
   .upload-resume{
     top: 25%;
   }
+  .check-mock input{
+    margin-top: 5px;  
+    margin-left: 5px;
+  }
+  .check-mock label{
+    margin-left: 5;
+  }
 
 }

@@ -7,10 +7,11 @@ import { URL_ENDPOINT } from "../../constants/Config";
 import botimage from "../../assets/chatbot.jpg";
 import { mock } from "../../constants/prompts";
 
-function ChatAction({ isMock }) {
+function ChatAction({isMock}) {
     const isUploaded = useSelector(state => state.flow.isUploaded);
     const storedMessages = useSelector(state => state.chat.messages);
     const hasError = useSelector(state=>state.flow.hasError)
+    // const isMock = useSelector(state=>state.flow.isMock)
     const [isPrompting, setIsPrompting] = useState(false);
     const [prompt, setPrompt] = useState([]);
     const [count, setCount] = useState(0);
@@ -71,7 +72,7 @@ function ChatAction({ isMock }) {
 
     const handleInputChange = useCallback((event) => {
         setPrompt(event.target.value.split('\n'));
-    }, [dispatch]);
+    }, []);
 
     const feedBackHandler = useCallback(async () => {
         dispatch(handleError(false))

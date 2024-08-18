@@ -105,13 +105,13 @@ function PromptsMenu() {
             )}
             {mockenv && activePrompt === "mock" && (
                 <div className={styles["prompts-list"]}>
-                    <p className={styles.predefined}>
+                    <p className={styles.check}>
                         <label htmlFor="mock" style={{ cursor: "pointer" }}>
                             Make sure to check Mock Interview for better results.
                         </label>
                     </p>
                     <div className={styles["prompts-container"]}>
-                    {resume.map((prompts, index) => <div key={index}>
+                    {mock.map((prompts, index) => <div key={index}>
                       <h2 className={styles.predefined}>{prompts.type}</h2>
                       {prompts.prompts.map((prompt,index)=><p key={index}>{prompt}</p>)}
                      </div>)}

@@ -211,7 +211,9 @@
     position: absolute;
     top: 0px;
     font-family: 'Courier New', Courier, monospace;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-weight: 800;
     font-size: 13px;
     color: rgba(255, 255, 255, 0.833);
@@ -239,6 +241,7 @@
   }
   .check-mock{
     font-size:10px ;
+    align-items: flex-start;
   }
   .upload-resume{
     top: 25%;

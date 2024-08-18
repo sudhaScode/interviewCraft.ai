@@ -65,7 +65,7 @@ function ChatBot(){
 
     return(
         <div className={styles.container}>
-           { !isUploaded  && <div className={styles["check-mock"]}>
+           { isUploaded  && <div className={styles["check-mock"]}>
                 <input type="checkbox" id="mock" checked={isMock} onChange={mockHandler} disabled={!isUploaded}/>
                 <label htmlFor="mock"><span className={styles["mock-env"]} >Remember!</span> To Switch ON/OFF for Mock Interview Simulation </label>
            </div>}

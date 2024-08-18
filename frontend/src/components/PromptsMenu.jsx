@@ -6,13 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { handleReset, push } from "../Reduxstore/Store";
 
 function PromptsMenu() {
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(true);
     const [activePrompt, setActivePrompt] = useState("");
     const dispatch = useDispatch();
     const mockenv = useSelector(state => state.flow.isMock);
 
     const handleOptionClick = (promptType) => {
-        setShow(false)
+        // setShow(false)
         setActivePrompt(activePrompt === promptType ? "" : promptType);
     };
 

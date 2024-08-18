@@ -46,6 +46,7 @@ function ChatAction({ isMock }) {
         if (event.preventDefault){
             event.preventDefault();
         }
+        if (promptRef.current) promptRef.current.value = "";
 
           setIsPrompting(true);
         // setError(null);
@@ -57,7 +58,6 @@ function ChatAction({ isMock }) {
             const data = await fetchAPI(request);
 
             dispatch(push({ name: "Craft.ai", key: `bot-init-res${storedMessages.length}`, response: data.response }));
-            if (promptRef.current) promptRef.current.value = "";
             setPrompt([]);
         } catch {
             // Error handling done in fetchAPI

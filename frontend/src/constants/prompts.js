@@ -2,7 +2,7 @@ export const resume = [
          {
           type: "For Enahncing a Resume",
           prompts:[
-          "Enhace my resume [Along with your Resume information  for better results]",
+          "Enhance my resume",
           "Can you provide feedback on my resume and key points to improve it?",
           " How can I enhance my resume to better showcase my qualifications and attract potential employers?",
           "Can you suggest specific ways to improve my resume's impact and make it more compelling to hiring managers and send me improved resume?",
@@ -86,8 +86,8 @@ export const interview = [
       {
           type: "For Feedback",
           prompts: [
-              "Provide immediate feedback on my responses during this mock interview, including suggestions for improvement.",
-              "I'd like to get some feedback on how I'm doing so far. Please highlight areas of strength and where I can improve.",
+              "Provide immediate feedback on my responses and refined solutions during this mock interview, including suggestions for improvement.",
+              "I'd like to get some feedback on how I'm doing so far. Please highlight areas of strength and where I can improve and Cloud you refine my solutions",
               "Give me feedback on my non-verbal communication during this mock interview and suggest ways to enhance it."
           ]
       },

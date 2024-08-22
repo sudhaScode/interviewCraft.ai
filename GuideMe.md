@@ -46,7 +46,7 @@ GenAI allows you to ask any career-related question and provides crafted explana
 ## User Guide
 
 ### Getting Started
-1. **Log In:** Access the application by logging in using the superuser password. Validation is removed for easy access; you can use any values.
+1. **Log In:{Removed}** Access the application by logging in using the superuser password. Validation is removed for easy access; you can use any values.
 2. **Upload Resume:** Upload the resume you want to enhance and use for interview preparation.
 3. **Enable Chat Window:** The chat window is enabled after a successful resume upload.
 

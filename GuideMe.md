@@ -19,7 +19,7 @@ interviewCraft.ai is a  personalized, LLM-powered generative AI web application 
 
 ## Features
 
-### Resume Enhancer
+### Resume Enhancer and Instant Feedback
 Our Resume Enhancer uses the latest generative AI technology to elevate your resume to new heights. Here's what it offers:
 - **Structured Approach:** Guide the application through your skills, experience, and achievements using a clear, step-by-step process.
 - **AI-Powered Content Generation:** GenAI generates compelling content for each section of your resume, highlighting your strengths and qualifications based on your inputs.

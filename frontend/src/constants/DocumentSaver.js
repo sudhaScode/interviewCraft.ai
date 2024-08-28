@@ -65,22 +65,18 @@ export const saveDoc = async () => {
                         yOffset += lineHeight;
                     });
                 } else {
-                    let prompt = chat.response.join(" ");
+                    let prompt = ""
+                    chat.response.forEach(msg => {
+                        prompt = `${prompt} ${msg}\n`;
+                    });
                     pdf.setFont("helvetica", "bold");
                     pdf.setFontSize(14);
                     pdf.text("USERMESSAGE:", 10, yOffset);
                     yOffset += lineHeight;
 
                     pdf.setFont("helvetica", "normal");
-                    const message = cleanAndFormatText(prompt);
-                    const lines = pdf.splitTextToSize(message, maxWidth);
-                    lines.forEach((line) => {
-                        if (yOffset + lineHeight > pageHeight) {
-                            pdf.addPage();
-                            yOffset = 10;
-                        }
                         pdf.setFontSize(12);
-                        pdf.text(line, 10, yOffset);
+                        pdf.text(prompt, 10, yOffset);
                         yOffset += lineHeight;
                     });
                 }

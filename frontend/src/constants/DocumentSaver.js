@@ -78,7 +78,6 @@ export const saveDoc = async () => {
                         pdf.setFontSize(12);
                         pdf.text(prompt, 10, yOffset);
                         yOffset += lineHeight;
-                    });
                 }
                 yOffset += lineHeight; // Add some space after each message
             }

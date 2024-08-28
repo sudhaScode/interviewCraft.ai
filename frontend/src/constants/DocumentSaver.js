@@ -25,8 +25,8 @@ function cleanAndFormatText(text) {
     text = text.replace(/<\/?[^>]+(>|$)/g, ""); // Remove HTML tags
     text = text.replace(/\*\*/g, ""); // Remove markdown bold
     text = text.replace(/\*/g, ""); // Remove markdown italics
-    text = text.replace(/(\r\n|\n|\r)/gm, " "); // Replace newlines with spaces
-    text = text.replace(/\s\s+/g, "\n"); // Replace multiple spaces with new lines
+    // text = text.replace(/(\r\n|\n|\r)/gm, " "); // Replace newlines with spaces
+    text = text.replace(/\s\s+/g, "\n"); // Replace multiple spaces with a single space
     text = text.replace(/(\d+)\.\s/g, "$1) "); // Convert numbered lists
     text = text.replace(/^\s*-\s/gm, "* "); // Convert bullet points
     return text.trim();

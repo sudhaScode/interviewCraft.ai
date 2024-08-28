@@ -84,10 +84,10 @@ export const saveDoc = async () => {
         });
     }
 
-    if (data === "") {
-        console.log("No data to save.");
-        return false;
-    }
+    // if (data === "") {
+    //     console.log("No data to save.");
+    //     return false;
+    // }
 
     let fileName = sessionStorage.getItem("fileName");
     if (fileName) {

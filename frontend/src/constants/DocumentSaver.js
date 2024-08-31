@@ -30,8 +30,8 @@ const fetchAPI =async(file)=>{
     // Replace markdown syntax with plain text equivalents
     text = text.replace(/\*\*/g, ""); // Remove bold (Markdown style)
     text = text.replace(/\*/g, ""); // Remove italics (Markdown style)
-    text = text.replace(/(\r\n|\n|\r)/gm, " "); // Replace newlines with spaces
-    text = text.replace(/\s\s+/g, " "); // Replace multiple spaces with a single space
+    // text = text.replace(/(\r\n|\n|\r)/gm, " "); // Replace newlines with spaces
+    text = text.replace(/\s\s+/g, "\n"); // Replace multiple spaces with a single space
     
     // Convert bullet points and lists to a plain text format
     text = text.replace(/(\d+)\.\s/g, "$1) "); // Convert numbered lists
@@ -48,7 +48,7 @@ export const saveDoc = async () => {
         conversation_data.forEach((chat, index) => {
             if (index >= 2) {
                 if (chat.name === "Craft.ai") {
-                    data = `${data}\nAIMESSAGE: ${cleanAndFormatText(chat.response)}`;
+                    data = `${data}\nAIESSAGE: ${cleanAndFormatText(chat.response)}`;
                 } else {
                     let prompt = "";
                     chat.response.forEach(msg => {

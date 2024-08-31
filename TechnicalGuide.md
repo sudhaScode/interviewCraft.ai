@@ -222,3 +222,62 @@ summary = chain.run("This is a long text that I want to summarize.")
 - asynchronous tasks in a high-traffic API: use a message queue like RabbitMQ or Kafka to decouple time-consuming tasks from the main API request flow. 
 
 
+
+## Basic Styling with jsPDF
+jsPDF provides several methods to control the styling of the PDF, including font type, font size, text color, and text alignment.
+1. **Setting Font Type and Font Style**
+You can set the font type and style using doc.setFont().
+```JavaScript
+doc.setFont("helvetica", "normal"); // Set font to Helvetica, normal weight
+doc.setFont("courier", "bold"); // Set font to Courier, bold weight
+doc.setFont("times", "italic"); // Set font to Times, italic weight
+```
+2. **Setting Font Size**
+Set the font size using setFontSize.
+```JavaScript
+doc.setFontSize(16); // Sets font size to 16
+```
+3. **Setting Text Color**
+Change the color of the text using setTextColor.
+```JavaScript
+doc.setTextColor(255, 0, 0); // Set text color to red
+doc.text("This is red text", 10, 10);
+
+doc.setTextColor(0, 255, 0); // Set text color to green
+doc.text("This is green text", 10, 30);
+```
+4. **Text Alignment**
+Align text using the doc.text() method's optional align parameter.
+```JavaScript
+doc.text("Left aligned text", 10, 10, { align: "left" });
+doc.text("Centered text", 105, 20, { align: "center" }); // 105 is half of the page width (A4 size: 210mm)
+doc.text("Right aligned text", 200, 30, { align: "right" });
+```
+### Advanced Styling Techniques
+1. **Adding Images** 
+You can add images to your PDF using the addImage method.
+```JavaScript
+doc.addImage(imageData, 'JPEG', 10, 10, 50, 50); // Adds an image to the PDF
+```
+2. *Creating Tables**
+For more complex layouts like tables, you might need to use a plugin like jspdf-autotable:
+```JavaScript
+import autoTable from 'jspdf-autotable';
+
+const doc = new jsPDF();
+autoTable(doc, {
+  head: [['Name', 'Email', 'Country']],
+  body: [
+    ['John Doe', 'john@example.com', 'USA'],
+    ['Anna Smith', 'anna@example.com', 'UK'],
+    ['Peter Jones', 'peter@example.com', 'Canada'],
+  ],
+});
+```
+3. **Drawing Shapes**
+You can draw shapes like rectangles, circles, and lines:
+```JavaScript
+doc.rect(10, 10, 100, 50); // Draw a rectangle
+doc.circle(60, 60, 20); // Draw a circle
+doc.line(10, 10, 50, 50); // Draw a line
+```
